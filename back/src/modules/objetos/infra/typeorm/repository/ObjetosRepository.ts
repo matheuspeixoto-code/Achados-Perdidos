@@ -27,13 +27,19 @@ class ObjetosRepository implements IObjetosRepository{
         return objeto
     }
 
-    async list(): Promise<Objetos[]> {
-        const objetos = this.repository.find({
-            relations:["categoria_id"]
-        })
+    async list(categoria_id?: string): Promise<Objetos[]> {
+        const objetosQuery = this.repository
+            .createQueryBuilder("o");
 
-        return objetos
+        if (categoria_id) {
+            objetosQuery
+                .innerJoin("o.categoria_id", "categoria")
+                .where("categoria.id = :categoria_id", { categoria_id });
+        }
+
+        return await objetosQuery.getMany();
     }
+
 
 
 }
