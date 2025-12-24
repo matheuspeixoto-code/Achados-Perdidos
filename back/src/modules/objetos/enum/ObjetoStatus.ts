@@ -1,0 +1,7 @@
+export enum ObjetoStatus {
+  ENCONTRADO = "ENCONTRADO",     
+  DISPONIVEL = "DISPONIVEL",     
+  REIVINDICADO = "REIVINDICADO", 
+  DEVOLVIDO = "DEVOLVIDO",       
+  DESCARTADO = "DESCARTADO",    
+}
