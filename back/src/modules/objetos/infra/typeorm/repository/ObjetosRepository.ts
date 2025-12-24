@@ -32,7 +32,7 @@ class ObjetosRepository implements IObjetosRepository{
         return objeto
     }
 
-    async list(categoria_id?: string): Promise<Objetos[]> {
+    async list(categoria_id?: string,nome?:string): Promise<Objetos[]> {
         const objetosQuery = this.repository
             .createQueryBuilder("o");
 
@@ -41,6 +41,13 @@ class ObjetosRepository implements IObjetosRepository{
                 .innerJoin("o.categoria_id", "categoria")
                 .where("categoria.id = :categoria_id", { categoria_id });
         }
+        if (nome) {
+            objetosQuery.andWhere(
+                "o.nome ILIKE :nome",
+                { nome: `%${nome}%` }
+            );
+        }
+
 
         return await objetosQuery.getMany();
     }
