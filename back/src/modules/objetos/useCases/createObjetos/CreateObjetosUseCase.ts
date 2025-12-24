@@ -9,6 +9,7 @@ interface IRequest{
     descricao:string;
     local:string;
     dataEncontrada?:Date;
+    categoria_id:string;
     
 }
 
@@ -18,7 +19,7 @@ class CreateObjetosUseCase{
         @inject("ObjetosRepository")
         private objetosRepository: IObjetosRepository 
     ){}
-    async execute({nome,descricao,local,dataEncontrada}:IRequest):Promise<Objetos>{
+    async execute({nome,descricao,local,dataEncontrada,categoria_id}:IRequest):Promise<Objetos>{
         if(!nome || nome.trim() === "" ){
             throw new AppError("Informe o nome do objeto")
         }
@@ -35,7 +36,8 @@ class CreateObjetosUseCase{
             nome,
             descricao,
             local,
-            dataEncontrada
+            dataEncontrada,
+            categoria_id
         })
 
         return objeto
