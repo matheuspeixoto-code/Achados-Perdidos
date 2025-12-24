@@ -4,9 +4,12 @@ import { ListObjetosUseCase } from "./ListObjetosUseCase"
 
 class ListObjetosController{
     async handle(request:Request,response:Response):Promise<Response>{
+        const {categoria_id} = request.query
         const listObjetosUseCase = container.resolve(ListObjetosUseCase)
 
-        const allObjetos = await listObjetosUseCase.execute()
+        const allObjetos = await listObjetosUseCase.execute({
+            categoria_id: categoria_id as string 
+        })
 
         return response.status(201).json(allObjetos)
     }

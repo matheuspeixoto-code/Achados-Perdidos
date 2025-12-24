@@ -2,6 +2,10 @@ import { IObjetosRepository } from "@modules/objetos/implementations/IObjetosRep
 import { Objetos } from "@modules/objetos/infra/typeorm/entities/Objetos";
 import { inject, injectable } from "tsyringe";
 
+interface IRequest{
+    categoria_id?:string
+}
+
 
 @injectable()
 class ListObjetosUseCase{
@@ -11,8 +15,8 @@ class ListObjetosUseCase{
 
     ){}
 
-    async execute():Promise<Objetos[]> {
-        const objetos = await this.objetosRepository.list()
+    async execute({categoria_id}:IRequest):Promise<Objetos[]> {
+        const objetos = await this.objetosRepository.list(categoria_id)
 
         return objetos
     }
