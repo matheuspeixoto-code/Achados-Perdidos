@@ -27,7 +27,7 @@ class Objetos{
 
     @ManyToOne(()=>Categoria)
     @JoinColumn({name:"categoria_id"})
-    categoria:Categoria
+    categoria_id:Categoria
 
     
     @Column()
