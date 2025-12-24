@@ -4,6 +4,7 @@ import { inject, injectable } from "tsyringe";
 
 interface IRequest{
     categoria_id?:string
+    nome?:string
 }
 
 
@@ -15,8 +16,11 @@ class ListObjetosUseCase{
 
     ){}
 
-    async execute({categoria_id}:IRequest):Promise<Objetos[]> {
-        const objetos = await this.objetosRepository.list(categoria_id)
+    async execute({categoria_id,nome}:IRequest):Promise<Objetos[]> {
+        const objetos = await this.objetosRepository.list(
+            categoria_id,
+            nome
+        )
 
         return objetos
     }
