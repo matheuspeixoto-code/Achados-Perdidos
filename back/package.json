@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --respawn -r tsconfig-paths/register src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli -d ./src/data-source.ts",
+    "dev": "ts-node-dev --transpile-only --respawn -r tsconfig-paths/register src/shared/infra/http/server.ts",
+    "typeorm": "ts-node-dev -r tsconfig-paths/register -r dotenv/config ./node_modules/typeorm/cli -d ./src/data-source.ts",
     "typeorm:create": "ts-node-dev ./node_modules/typeorm/cli"
   },
   "keywords": [],
@@ -26,6 +26,7 @@
     "reflect-metadata": "^0.2.2",
     "tsconfig-paths": "^4.2.0",
     "tsyringe": "^4.10.0",
-    "typeorm": "^0.3.28"
+    "typeorm": "^0.3.28",
+    "uuid": "^9.0.1"
   }
 }
