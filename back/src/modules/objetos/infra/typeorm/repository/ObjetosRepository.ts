@@ -13,12 +13,13 @@ class ObjetosRepository implements IObjetosRepository{
         this.repository = AppDataSource.getRepository(Objetos)
     }
 
-    async create({nome,descricao,dataEncontrada,local}: ICreateObjetosDTO): Promise<Objetos> {
+    async create({nome,descricao,dataEncontrada,local,categoria_id}: ICreateObjetosDTO): Promise<Objetos> {
         const objeto = this.repository.create({
             nome,
             descricao,
             dataEncontrada,
-            local
+            local,
+            categoria_id:{id:categoria_id}
         })
 
         await this.repository.save(objeto)
