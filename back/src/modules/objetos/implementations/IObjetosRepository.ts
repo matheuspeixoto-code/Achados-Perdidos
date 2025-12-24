@@ -4,7 +4,7 @@ import { ICreateObjetosDTO } from "@modules/objetos/dtos/ICreateObjetosDTO"
 
 interface IObjetosRepository{
     create({nome,descricao,dataEncontrada,local,categoria_id}:ICreateObjetosDTO):Promise<Objetos>
-    list():Promise<Objetos[]>
+    list(categoria_id?:string):Promise<Objetos[]>
 }
 
 export {IObjetosRepository}
