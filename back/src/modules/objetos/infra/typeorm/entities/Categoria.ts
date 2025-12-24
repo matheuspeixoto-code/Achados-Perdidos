@@ -8,7 +8,7 @@ class Categoria{
     id?:string;
 
     @Column()
-    name:string;
+    nome:string;
     
 
     @CreateDateColumn() 
