@@ -28,7 +28,9 @@ class ObjetosRepository implements IObjetosRepository{
     }
 
     async list(): Promise<Objetos[]> {
-        const objetos = this.repository.find()
+        const objetos = this.repository.find({
+            relations:["categoria_id"]
+        })
 
         return objetos
     }
