@@ -29,6 +29,9 @@ class Objetos{
     @JoinColumn({name:"categoria_id"})
     categoria_id:Categoria
 
+    @Column()
+    objeto_image:string;
+
     
     @Column()
     local:string
