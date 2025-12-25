@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import {v4 as uuidV4} from "uuid";
+import { Objetos } from "./Objetos";
 
 
 
@@ -9,8 +10,11 @@ class ObjetosImage{
     @PrimaryColumn()
     id:string;
 
-    @Column()
-    objeto_id:string;
+    @ManyToOne(() => Objetos, objeto => objeto.imagens, {
+        onDelete: "CASCADE"
+    })
+    @JoinColumn({ name: "objeto_id" })
+    objeto: Objetos;
 
     @Column()
     objeto_image:string;
