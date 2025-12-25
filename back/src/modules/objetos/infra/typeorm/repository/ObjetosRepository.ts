@@ -3,6 +3,7 @@ import { IObjetosRepository } from "@modules/objetos/implementations/IObjetosRep
 import { Objetos } from "../entities/Objetos";
 import { Repository } from "typeorm";
 import { AppDataSource } from "@data";
+import { ObjetoStatus } from "@modules/objetos/enum/ObjetoStatus";
 
 
 
@@ -32,15 +33,22 @@ class ObjetosRepository implements IObjetosRepository{
         return objeto
     }
 
-    async list(categoria_id?: string,nome?:string): Promise<Objetos[]> {
+    async list(categoria_id?: string, nome?: string): Promise<Objetos[]> {
         const objetosQuery = this.repository
-            .createQueryBuilder("o");
+            .createQueryBuilder("o")
+            .leftJoinAndSelect("o.imagens", "imagens")
+            .leftJoinAndSelect("o.categoria_id", "categoria")
+            .where("o.status =:status",{
+                status:ObjetoStatus.ENCONTRADO
+            })
 
         if (categoria_id) {
-            objetosQuery
-                .innerJoin("o.categoria_id", "categoria")
-                .where("categoria.id = :categoria_id", { categoria_id });
+            objetosQuery.andWhere(
+                "categoria.id = :categoria_id",
+                { categoria_id }
+            );
         }
+
         if (nome) {
             objetosQuery.andWhere(
                 "o.nome ILIKE :nome",
@@ -48,9 +56,9 @@ class ObjetosRepository implements IObjetosRepository{
             );
         }
 
-
         return await objetosQuery.getMany();
-    }
+}
+
 
 
 
