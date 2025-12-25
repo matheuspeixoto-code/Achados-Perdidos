@@ -1,7 +1,8 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import {v4 as uuidV4} from "uuid"
 import {ObjetoStatus} from "@modules/objetos/enum/ObjetoStatus"
 import { Categoria } from "./Categoria";
+import { ObjetosImage } from "./ObjetosImage";
 
 
 @Entity("objetos")
@@ -28,6 +29,9 @@ class Objetos{
     @ManyToOne(()=>Categoria)
     @JoinColumn({name:"categoria_id"})
     categoria_id:Categoria
+
+    @OneToMany(() => ObjetosImage, image => image.objeto)
+    imagens: ObjetosImage[];
 
     
     @Column()
