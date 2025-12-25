@@ -13,7 +13,7 @@ class ObjetosImage{
     objeto_id:string;
 
     @Column()
-    image_objeto:string;
+    objeto_image:string;
 
     @CreateDateColumn()
     created_at:Date
