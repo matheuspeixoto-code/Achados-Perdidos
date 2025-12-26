@@ -6,6 +6,8 @@ import { inject, injectable } from "tsyringe";
 import { validarCPF } from "@modules/users/validação/ValidarCPF";
 import { validarEmail } from "@modules/users/validação/ValidarEmail";
 
+import { hash } from "bcrypt";
+
 interface IRequest{
     cpf:string;
     telefone:string;
@@ -45,11 +47,13 @@ class CreateUserUseCase{
             throw new AppError("Usuário já existente")
         }
 
+        const senhaHash = await hash(senha,8)
+
         const user = await this.userRepository.create({
             cpf,
             data_nascimento,
             email,
-            senha,
+            senha:senhaHash ,
             genero,
             telefone,
             nome_completo,
