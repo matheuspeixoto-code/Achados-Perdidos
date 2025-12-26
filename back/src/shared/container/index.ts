@@ -6,7 +6,8 @@ import { ICategoriaRepository } from "@modules/objetos/implementations/ICategori
 import { CategoriaRepository } from "@modules/objetos/infra/typeorm/repository/CategoriaRepository";
 import { IObjetosImageRepository } from "@modules/objetos/implementations/IObjetosImageRepository";
 import { ObjetosImagesRepository } from "@modules/objetos/infra/typeorm/repository/ObjetoImageRepository";
-
+import { IUserReposiory } from "@modules/users/implementations/IUserRepository";
+import { UserRepository } from "@modules/users/infra/typeorm/repository/UserRepository";
 
 container.registerSingleton<IObjetosRepository>(
     "ObjetosRepository",
@@ -21,4 +22,9 @@ container.registerSingleton<IObjetosImageRepository>(
 container.registerSingleton<ICategoriaRepository>(
     "CategoriaRepository",
     CategoriaRepository
+)
+
+container.registerSingleton<IUserReposiory>(
+    "UserRepository",
+    UserRepository
 )
