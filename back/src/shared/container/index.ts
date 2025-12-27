@@ -8,6 +8,8 @@ import { IObjetosImageRepository } from "@modules/objetos/implementations/IObjet
 import { ObjetosImagesRepository } from "@modules/objetos/infra/typeorm/repository/ObjetoImageRepository";
 import { IUserReposiory } from "@modules/users/implementations/IUserRepository";
 import { UserRepository } from "@modules/users/infra/typeorm/repository/UserRepository";
+import { IEnderecoRepository } from "@modules/users/implementations/IEnderecoRepository";
+import { EnderecoRepository } from "@modules/users/infra/typeorm/repository/EnderecoRepository";
 
 container.registerSingleton<IObjetosRepository>(
     "ObjetosRepository",
@@ -27,4 +29,9 @@ container.registerSingleton<ICategoriaRepository>(
 container.registerSingleton<IUserReposiory>(
     "UserRepository",
     UserRepository
+)
+
+container.registerSingleton<IEnderecoRepository>(
+    "EnderecoRepository",
+    EnderecoRepository
 )
