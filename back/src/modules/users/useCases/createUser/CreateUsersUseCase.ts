@@ -7,6 +7,7 @@ import { validarCPF } from "@modules/users/validação/ValidarCPF";
 import { validarEmail } from "@modules/users/validação/ValidarEmail";
 
 import { hash } from "bcrypt";
+import { IEnderecoRepository } from "@modules/users/implementations/IEnderecoRepository";
 
 interface IRequest{
     cpf:string;
@@ -16,7 +17,14 @@ interface IRequest{
     email:string;
     senha:string;
     genero:Sexo;
-    data_nascimento:Date
+    data_nascimento:Date,
+    endereco:{
+        user_id:string
+        cep:string;
+        rua:string;
+        numero:string;
+        bairro:string
+    }
 }
 
 
@@ -24,12 +32,15 @@ interface IRequest{
 class CreateUserUseCase{
     constructor(
         @inject("UserRepository")
-        private userRepository:IUserReposiory
+        private userRepository:IUserReposiory,
+
+        @inject("EnderecoRepository")
+        private enderecoRepository:IEnderecoRepository
 
     ){}
 
 
-    async execute({cpf,telefone,username,nome_completo,email,senha,genero,data_nascimento}:IRequest):Promise<User>{
+    async execute({cpf,telefone,username,nome_completo,email,senha,genero,data_nascimento,endereco}:IRequest):Promise<User>{
 
         if(!validarCPF(cpf)){
             throw new AppError("CPF inválido")
@@ -57,7 +68,15 @@ class CreateUserUseCase{
             genero,
             telefone,
             nome_completo,
-            username
+            username,
+        })
+
+        await this.enderecoRepository.create({
+            user_id:user.id,
+            cep:endereco.cep,
+            rua:endereco.rua,
+            numero:endereco.numero,
+            bairro:endereco.bairro
         })
 
         return user
