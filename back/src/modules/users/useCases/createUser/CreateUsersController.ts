@@ -1,7 +1,7 @@
 import { Request,Response } from "express";
 import { container } from "tsyringe";
 import { CreateUserUseCase } from "./CreateUsersUseCase";
-import { use } from "react";
+
 
 
 class CreateUserController{
@@ -14,7 +14,8 @@ class CreateUserController{
             email, 
             senha,
             genero,
-            data_nascimento
+            data_nascimento,
+            endereco
         } = resquest.body
         const createUserUseCase= container.resolve(CreateUserUseCase)
 
@@ -26,7 +27,8 @@ class CreateUserController{
             email, 
             senha,
             genero,
-            data_nascimento
+            data_nascimento,
+            endereco
         })
 
         return response.status(201).json(user)
