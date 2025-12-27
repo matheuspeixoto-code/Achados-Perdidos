@@ -1,6 +1,7 @@
 import { Sexo } from "@modules/users/enum/Sexo";
-import { Column, CreateDateColumn, Entity, PrimaryColumn, Unique } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, Unique } from "typeorm";
 import {v4 as uuidV4} from "uuid"
+import { Endereco } from "./Endereco";
 
 
 @Entity("users")
@@ -11,6 +12,9 @@ class User{
 
     @Column()
     cpf:string;
+
+    @OneToMany(() => Endereco, endereco => endereco.user)
+    enderecos: Endereco[];
 
     @Column()
     telefone:string;
