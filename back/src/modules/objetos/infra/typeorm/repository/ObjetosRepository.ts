@@ -14,10 +14,16 @@ class ObjetosRepository implements IObjetosRepository{
         this.repository = AppDataSource.getRepository(Objetos)
     }
     async findById(id: string): Promise<Objetos> {
-        const objeto = await this.repository.findOne({where:{id}})
+    const objeto = await this.repository
+            .createQueryBuilder("o")
+            .leftJoinAndSelect("o.imagens", "imagens")
+            .leftJoinAndSelect("o.categoria_id", "categoria")
+            .where("o.id = :id", { id })
+            .getOne();
 
-        return objeto
+        return objeto;
     }
+
 
     async create({nome,descricao,dataEncontrada,local,categoria_id}: ICreateObjetosDTO): Promise<Objetos> {
         const objeto = this.repository.create({
