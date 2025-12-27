@@ -44,6 +44,9 @@ class User{
     @Column()
     data_nascimento:Date
 
+    @Column()
+    avatar?:string;
+
     @CreateDateColumn()
     created_at:Date
 
