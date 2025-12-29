@@ -6,6 +6,7 @@ interface ICreateObjetosDTO{
     local:string;
     dataEncontrada?:Date;
     categoria_id:string;
+    hora?:string
 }
 
 export {ICreateObjetosDTO}
