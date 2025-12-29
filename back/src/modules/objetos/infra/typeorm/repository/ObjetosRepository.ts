@@ -13,6 +13,15 @@ class ObjetosRepository implements IObjetosRepository{
     constructor(){
         this.repository = AppDataSource.getRepository(Objetos)
     }
+
+
+    async update(objeto: Objetos): Promise<Objetos> {
+       const updateObjeto = await this.repository.save(objeto)
+
+       return updateObjeto;
+    }
+
+
     async findById(id: string): Promise<Objetos> {
     const objeto = await this.repository
             .createQueryBuilder("o")
@@ -25,13 +34,14 @@ class ObjetosRepository implements IObjetosRepository{
     }
 
 
-    async create({nome,descricao,dataEncontrada,local,categoria_id}: ICreateObjetosDTO): Promise<Objetos> {
+    async create({nome,descricao,dataEncontrada,local,hora,categoria_id}: ICreateObjetosDTO): Promise<Objetos> {
         const objeto = this.repository.create({
             nome,
             descricao,
             dataEncontrada,
             local,
-            categoria_id:{id:categoria_id}
+            categoria_id:{id:categoria_id},
+            hora
         })
 
         await this.repository.save(objeto)
