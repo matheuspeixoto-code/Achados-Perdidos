@@ -33,6 +33,9 @@ class Objetos{
     @OneToMany(() => ObjetosImage, image => image.objeto)
     imagens: ObjetosImage[];
 
+    @Column({ type: "time" })
+    hora: string;
+
     
     @Column()
     local:string
