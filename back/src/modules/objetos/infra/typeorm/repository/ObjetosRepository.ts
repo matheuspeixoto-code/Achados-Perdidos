@@ -13,6 +13,11 @@ class ObjetosRepository implements IObjetosRepository{
     constructor(){
         this.repository = AppDataSource.getRepository(Objetos)
     }
+    async updateStatus(objeto: Objetos, status: ObjetoStatus): Promise<void> {
+        objeto.status=status;
+        await this.repository.save(objeto)
+
+    }
 
 
     async update(objeto: Objetos): Promise<Objetos> {
@@ -23,12 +28,12 @@ class ObjetosRepository implements IObjetosRepository{
 
 
     async findById(id: string): Promise<Objetos> {
-    const objeto = await this.repository
-            .createQueryBuilder("o")
-            .leftJoinAndSelect("o.imagens", "imagens")
-            .leftJoinAndSelect("o.categoria_id", "categoria")
-            .where("o.id = :id", { id })
-            .getOne();
+        const objeto = await this.repository
+                .createQueryBuilder("o")
+                .leftJoinAndSelect("o.imagens", "imagens")
+                .leftJoinAndSelect("o.categoria_id", "categoria")
+                .where("o.id = :id", { id })
+                .getOne();
 
         return objeto;
     }
