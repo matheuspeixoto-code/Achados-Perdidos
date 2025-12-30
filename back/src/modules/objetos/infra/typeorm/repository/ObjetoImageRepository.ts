@@ -12,14 +12,14 @@ class ObjetosImagesRepository implements IObjetosImageRepository{
         this.repository=AppDataSource.getRepository(ObjetosImage)
     }
     async create(objeto_id: string, objeto_image: string): Promise<ObjetosImage> {
-        const carImage = this.repository.create({
-            objeto_id,
+        const objeto = this.repository.create({
+            objeto:{id:objeto_id},
             objeto_image
         })
 
-        await this.repository.save(carImage)
+        await this.repository.save(objeto)
 
-        return carImage
+        return objeto
     }
 
     
