@@ -10,6 +10,8 @@ import { IUserReposiory } from "@modules/users/implementations/IUserRepository";
 import { UserRepository } from "@modules/users/infra/typeorm/repository/UserRepository";
 import { IEnderecoRepository } from "@modules/users/implementations/IEnderecoRepository";
 import { EnderecoRepository } from "@modules/users/infra/typeorm/repository/EnderecoRepository";
+import { ISolicitacoesRepository } from "@modules/solicitacoes/implementations/ISolicitacoesRepository";
+import { SolicitacoesRepository } from "@modules/solicitacoes/infra/typeorm/repository/SolicitacoesRepository";
 
 container.registerSingleton<IObjetosRepository>(
     "ObjetosRepository",
@@ -34,4 +36,8 @@ container.registerSingleton<IUserReposiory>(
 container.registerSingleton<IEnderecoRepository>(
     "EnderecoRepository",
     EnderecoRepository
+)
+container.registerSingleton<ISolicitacoesRepository>(
+    "SolicitacoesRepository",
+    SolicitacoesRepository
 )
