@@ -21,6 +21,9 @@ class SolicitacoesResgate {
     @Column()
     descricao: string;
 
+    @Column({ nullable: true })
+    imagem?: string;
+
     @Column({
         type: "enum",
         enum: SolicitacaoStatus,
