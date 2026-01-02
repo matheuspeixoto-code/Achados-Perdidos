@@ -6,6 +6,8 @@ import { verificarAutentificacao } from "../middlewares/verificarAutentificacao"
 import { verificarAdmin } from "../middlewares/verificarAdmin";
 import { ListObjetosSolicitadosController } from "@modules/solicitacoes/useCases/listObjetosSolicitados/ListObjetosSolicitadosController";
 import { ListObjetosSolicitadosByIdController } from "@modules/solicitacoes/useCases/listObjetosSolicitadosById/ListObjetosSolicitadosByIdController";
+import { RejeitarSolicitacaoController } from "@modules/solicitacoes/useCases/rejeitarSolicitacao/RejeitarSolicitacaoController";
+import { AceitarSolicitacaoController } from "@modules/solicitacoes/useCases/aceitarSolicitacao/AceitarSolicitacaoController";
 
 const solicitacoesRoutes = Router();
 const upload = multer(uploadConfig.upload("./tmp/solicitacao_image"));
@@ -13,6 +15,8 @@ const upload = multer(uploadConfig.upload("./tmp/solicitacao_image"));
 const solicitarObjetosController = new SolicitarObjetosController();
 const listObjetosSolicitadosController = new ListObjetosSolicitadosController()
 const listObjetosSolicitadosByIdController = new ListObjetosSolicitadosByIdController()
+const rejeitarSolicitacaoController = new RejeitarSolicitacaoController()
+const aceitarSolicitacaoController =  new AceitarSolicitacaoController()
 
 solicitacoesRoutes.post(
   "/:objeto_id",
@@ -32,5 +36,19 @@ solicitacoesRoutes.get("/pendentes/:id",
   verificarAdmin,
   listObjetosSolicitadosByIdController.handle
 )
+
+solicitacoesRoutes.patch(
+  "/rejeitar/:id",
+  verificarAutentificacao,
+  verificarAdmin,
+  rejeitarSolicitacaoController.handle
+);
+
+solicitacoesRoutes.patch(
+  "/aceitar/:id",
+  verificarAutentificacao,
+  verificarAdmin,
+  aceitarSolicitacaoController.handle
+);
 
 export { solicitacoesRoutes };
