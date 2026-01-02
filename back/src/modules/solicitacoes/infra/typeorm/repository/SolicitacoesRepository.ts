@@ -3,6 +3,7 @@ import { Repository } from "typeorm"
 import { SolicitacoesResgate } from "../entities/SolicitacoesResgate"
 import { ISolicitacoesRepository } from "@modules/solicitacoes/implementations/ISolicitacoesRepository"
 import { ICreateSolicitacoesDTO } from "@modules/solicitacoes/dtos/ICreateSolicitacoesDTO"
+import { SolicitacaoStatus } from "@modules/solicitacoes/enum/SolicitacaoStatus"
 
 
 
@@ -13,6 +14,20 @@ class SolicitacoesRepository implements ISolicitacoesRepository{
     constructor(){
         this.repository= AppDataSource.getRepository(SolicitacoesResgate)
     }
+    async aceitarSolicitacao(solicitacao: SolicitacoesResgate,status:SolicitacaoStatus): Promise<void> {
+        solicitacao.status=status;
+        solicitacao.respondida_em = new Date()
+        
+        await this.repository.save(solicitacao)
+    }
+    
+    async rejeirarSolicitacao(solicitacao: SolicitacoesResgate, status: SolicitacaoStatus): Promise<void> {
+        solicitacao.status=status;
+        solicitacao.respondida_em = new Date()
+        
+        await this.repository.save(solicitacao)
+    }
+    
     async listSolicitadosById(id: string): Promise<SolicitacoesResgate> {
         const solicitacao = await this.repository
             .createQueryBuilder("s")
@@ -90,6 +105,8 @@ class SolicitacoesRepository implements ISolicitacoesRepository{
             }
         })
     }
+
+    
 
     
     async create({usuario_id,objeto_id,justificativa,status,imagem}: ICreateSolicitacoesDTO): Promise<SolicitacoesResgate> {
