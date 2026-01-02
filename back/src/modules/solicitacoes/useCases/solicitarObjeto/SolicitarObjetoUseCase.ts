@@ -32,7 +32,7 @@ class SolicitarObjetoUseCase{
             throw new AppError("Objeto não existe")
         }
 
-        if(objeto.status===ObjetoStatus.SOLICITADO){
+        if(objeto.status===ObjetoStatus.SOLICITADO || objeto.status===ObjetoStatus.DEVOLVIDO){
             throw new AppError("Objetos não está disponível para a solicitação")
         }
 
