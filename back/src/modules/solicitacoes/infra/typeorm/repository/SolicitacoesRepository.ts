@@ -14,6 +14,21 @@ class SolicitacoesRepository implements ISolicitacoesRepository{
     constructor(){
         this.repository= AppDataSource.getRepository(SolicitacoesResgate)
     }
+
+    async listByUser(user_id: string, status?: string): Promise<SolicitacoesResgate[]> {
+        const query = this.repository
+            .createQueryBuilder("s")
+            .leftJoinAndSelect("s.objeto", "o")
+            .leftJoinAndSelect("o.imagens", "imagens")
+            .where("s.usuario_id = :user_id", { user_id });
+
+        if (status) {
+            query.andWhere("s.status = :status", { status });
+        }
+
+        return await query.getMany();
+    }
+
     async aceitarSolicitacao(solicitacao: SolicitacoesResgate,status:SolicitacaoStatus): Promise<void> {
         solicitacao.status=status;
         solicitacao.respondida_em = new Date()
