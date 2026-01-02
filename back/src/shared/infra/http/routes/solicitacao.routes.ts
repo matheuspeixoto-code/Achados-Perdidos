@@ -8,6 +8,7 @@ import { ListObjetosSolicitadosController } from "@modules/solicitacoes/useCases
 import { ListObjetosSolicitadosByIdController } from "@modules/solicitacoes/useCases/listObjetosSolicitadosById/ListObjetosSolicitadosByIdController";
 import { RejeitarSolicitacaoController } from "@modules/solicitacoes/useCases/rejeitarSolicitacao/RejeitarSolicitacaoController";
 import { AceitarSolicitacaoController } from "@modules/solicitacoes/useCases/aceitarSolicitacao/AceitarSolicitacaoController";
+import { ListSolicitacoesDoUsuarioController } from "@modules/solicitacoes/useCases/listSolicitacoesDoUsuario/ListSolicitacoesDoUsuarioController";
 
 const solicitacoesRoutes = Router();
 const upload = multer(uploadConfig.upload("./tmp/solicitacao_image"));
@@ -17,6 +18,7 @@ const listObjetosSolicitadosController = new ListObjetosSolicitadosController()
 const listObjetosSolicitadosByIdController = new ListObjetosSolicitadosByIdController()
 const rejeitarSolicitacaoController = new RejeitarSolicitacaoController()
 const aceitarSolicitacaoController =  new AceitarSolicitacaoController()
+const listSolicitacoesDoUsuarioController = new ListSolicitacoesDoUsuarioController()
 
 solicitacoesRoutes.post(
   "/:objeto_id",
@@ -50,5 +52,11 @@ solicitacoesRoutes.patch(
   verificarAdmin,
   aceitarSolicitacaoController.handle
 );
+
+solicitacoesRoutes.get(
+  "/minhasSolicitacoes",
+  verificarAutentificacao,
+  listSolicitacoesDoUsuarioController.handle
+)
 
 export { solicitacoesRoutes };
