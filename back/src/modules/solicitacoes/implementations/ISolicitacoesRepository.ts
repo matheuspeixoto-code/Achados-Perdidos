@@ -10,6 +10,8 @@ interface ISolicitacoesRepository{
     listSolicitadosById(id:string):Promise<SolicitacoesResgate>;
     rejeirarSolicitacao(solicitacao:SolicitacoesResgate,status:SolicitacaoStatus):Promise<void>
     aceitarSolicitacao(solicitacao:SolicitacoesResgate,status:SolicitacaoStatus):Promise<void>
+    listByUser(user_id: string,status?: string): Promise<SolicitacoesResgate[]>;
+
 }
 
 export {ISolicitacoesRepository}
