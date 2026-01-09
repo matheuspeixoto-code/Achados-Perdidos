@@ -30,7 +30,7 @@ class AutenticacaoUserUseCase{
     async execute({email,senha}:IRequest):Promise<IResponse>{
         const user = await this.userRepository.findByEmail(email)
 
-        if(!user){
+        if(!user || user.deletedAt){
             throw new AppError("Email ou senha incorreta")
         }
 
