@@ -7,6 +7,7 @@ interface IUserReposiory{
     findByEmail(email:string):Promise<User>;
     findById(id:string):Promise<User>;
     save(user:User):Promise<User>;
+    deleteUser(user:User):Promise<void>;
 }
 
 export {IUserReposiory}
