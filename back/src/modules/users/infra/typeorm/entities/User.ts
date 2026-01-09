@@ -1,5 +1,5 @@
 import { Sexo } from "@modules/users/enum/Sexo";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, Unique } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryColumn, Unique } from "typeorm";
 import {v4 as uuidV4} from "uuid"
 import { Endereco } from "./Endereco";
 
@@ -49,6 +49,9 @@ class User{
 
     @CreateDateColumn()
     created_at:Date
+    
+    @DeleteDateColumn({ name: "deleted_at" })
+    deletedAt?: Date;
 
     constructor(){
         if(!this.id){
