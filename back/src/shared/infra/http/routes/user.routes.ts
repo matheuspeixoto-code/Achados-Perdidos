@@ -7,6 +7,7 @@ import multer from "multer";
 import { UploadUserAvatarController } from "@modules/users/useCases/uploadUserAvatar/UploadUserAvatarController";
 import { GetUserByIdController } from "@modules/users/useCases/getUserById/GetUserByIdController";
 import { DeleteUserController } from "@modules/users/useCases/deleteUser/DeleteUserController";
+import { UpdateUserController } from "@modules/users/useCases/updateInfoUser/UpdateUserController";
 
 const userRouter = Router()
 
@@ -15,12 +16,13 @@ const createUserController = new CreateUserController()
 const uploadUserAvatarController = new UploadUserAvatarController()
 const getUserByIdController = new GetUserByIdController()
 const deleteUserController = new DeleteUserController()
+const updateUserController = new UpdateUserController()
 
 const uploadAvatar=multer(uploadConfig.upload("./tmp/avatar"))
 
 
 userRouter.post("/createUser",createUserController.handle)
-userRouter.get("/:id",
+userRouter.get("/myUser",
     verificarAutentificacao,
     getUserByIdController.handle
 
@@ -30,6 +32,11 @@ userRouter.delete("/delete",
     verificarAutentificacao,
     deleteUserController.handle
 
+)
+
+userRouter.put("/update",
+    verificarAutentificacao,
+    updateUserController.handle
 )
 
 userRouter.patch("/avatar",
