@@ -11,6 +11,12 @@ class EnderecoRepository implements IEnderecoRepository{
     constructor(){
         this.repository=AppDataSource.getRepository(Endereco)
     }
+    async findByUserId(user_id: string): Promise<Endereco> {
+        return await this.repository.findOne({where:{user_id}})
+    }
+    async save(endereco: Endereco): Promise<void> {
+        await this.repository.save(endereco)
+    }
 
 
     async create({user_id,rua,cep,numero,bairro}: ICreateEnderecoDTO): Promise<void> {
