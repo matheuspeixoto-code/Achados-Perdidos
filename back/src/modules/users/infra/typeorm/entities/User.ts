@@ -1,8 +1,7 @@
 import { Sexo } from "@modules/users/enum/Sexo";
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryColumn, Unique } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, OneToOne, PrimaryColumn, Unique } from "typeorm";
 import {v4 as uuidV4} from "uuid"
 import { Endereco } from "./Endereco";
-
 
 @Entity("users")
 class User{
@@ -13,8 +12,11 @@ class User{
     @Column()
     cpf:string;
 
-    @OneToMany(() => Endereco, endereco => endereco.user)
-    enderecos: Endereco[];
+    @OneToOne(() => Endereco, endereco => endereco.user,{
+        cascade: true,
+        eager: true
+    })
+    endereco: Endereco;
 
     @Column()
     telefone:string;
