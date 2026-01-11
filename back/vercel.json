@@ -5,5 +5,8 @@
     ],
     "routes": [
         { "src": "/(.*)", "dest": "src/shared/infra/http/server.ts" }
+    ],
+    "rewrites": [
+        { "source": "/api/(.*)", "destination": "/src/shared/infra/http/server.ts" }
     ]
 }
