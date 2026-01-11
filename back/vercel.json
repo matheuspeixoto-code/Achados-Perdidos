@@ -1,12 +1,17 @@
 {
     "version": 2,
-    "builds": [ 
-        { "src": "src/shared/infra/http/server.ts", "use": "@vercel/node" }
+    "buildCommand": "npm run build",
+    "builds": [
+        {
+            "src": "dist/shared/infra/http/server.js",
+            "use": "@vercel/node",
+            "config": { "includeFiles": "dist/**" }
+        }
     ],
     "routes": [
-        { "src": "/(.*)", "dest": "src/shared/infra/http/server.ts" }
-    ],
-    "rewrites": [
-        { "source": "/api/(.*)", "destination": "/src/shared/infra/http/server.ts" }
+        {
+            "src": "/(.*)",
+            "dest": "dist/shared/infra/http/server.js"
+        }
     ]
 }
