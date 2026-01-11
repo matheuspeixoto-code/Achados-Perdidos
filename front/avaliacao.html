@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos UFC - Itens em Avaliação</title>
+    <link rel="stylesheet" href="css/itens.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="items-body">
+
+    <header class="profile-header-bg">
+        <div class="header-top">
+            <div class="menu-container">
+                <button class="btn-menu-white" onclick="toggleMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+                <div id="dropdown-menu" class="dropdown-box hidden">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="perfil.html">Meu Perfil</a></li>
+                        <li><a href="pessoais.html">Dados Pessoais</a></li>
+                        <li class="separator-menu" style="border-top:1px solid #eee; margin:5px 0;"></li>
+                        <li><a href="recuperados.html">Itens Recuperados</a></li>
+                        <li><a href="avaliacao.html">Itens em Avaliação</a></li>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <img src="images/logo-topo-aep.png" alt="Achados e Perdidos" class="logo-top">
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <div class="profile-card-top">
+            <div class="profile-identity">
+                <div class="big-avatar">
+                    <img src="images/user-sem-img.png" alt="Foto de Perfil">
+                </div>
+                <div class="identity-text">
+                    <h1>Mathues Peixoto Pereira</h1>
+                    <p class="subtitle">ITENS EM AVALIAÇÃO</p>
+                </div>
+            </div>
+
+            <div class="profile-right-side">
+                <a href="recuperados.html" class="view-data-link">
+                    Ver Itens Recuperados <span class="material-icons" style="font-size: 1rem;">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="items-list">
+            
+            <div class="item-card">
+                <div class="card-left">
+                    <div class="item-thumb"><img src="images/exemplo-item.png" alt="Item"></div>
+                    <div class="item-info">
+                        <h3>Cassaco</h3>
+                        <p>Título: Cassaco perdido nas proximidades da UFC</p>
+                    </div>
+                </div>
+                <div class="status-badge text-green">Aprovado</div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-left">
+                    <div class="item-thumb"><img src="images/exemplo-item.png" alt="Item"></div>
+                    <div class="item-info">
+                        <h3>Carteira</h3>
+                        <p>Título: Carteira marrom com documentos</p>
+                    </div>
+                </div>
+                <div class="status-badge text-white">Em espera...</div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-left">
+                    <div class="item-thumb"><img src="images/exemplo-item.png" alt="Item"></div>
+                    <div class="item-info">
+                        <h3>Calculadora</h3>
+                        <p>Título: Casio fx-82</p>
+                    </div>
+                </div>
+                <div class="status-badge text-red">Negado</div>
+            </div>
+
+        </div>
+
+        <div class="btn-back-area">
+            <button class="btn-back" onclick="window.location.href='index.html'">
+                <span class="material-icons">arrow_back</span>
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-cols">
+                <div class="col">
+                    <h4>Institucional</h4>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col">
+                    <h4>Sites Complementares</h4>
+                    <a href="http://www.campusrussas.ufc.br/" target="_blank">UFC - Campus Russas</a>
+                    <a href="https://www.ufc.br/" target="_blank">UFC - Universidade Federal do Ceará</a>
+                </div>
+                <div class="col logo-footer">
+                    <img src="images/logo-texto-aep.png" alt="Logo">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Achados e Perdidos - Nenhum dos direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>

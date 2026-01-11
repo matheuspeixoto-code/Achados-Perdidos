@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos UFC - Ajuda</title>
+    <link rel="stylesheet" href="css/suporte.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="support-body">
+
+    <header class="profile-header-bg">
+        <div class="header-top">
+            <div class="menu-container">
+                <button class="btn-menu-white" onclick="toggleMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+                <div id="dropdown-menu" class="dropdown-box hidden">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="perfil.html">Meu Perfil</a></li>
+                        <li><a href="pessoais.html">Dados Pessoais</a></li>
+                        <li class="separator-menu"></li>
+                        <li><a href="recuperados.html">Itens Recuperados</a></li>
+                        <li><a href="avaliacao.html">Itens em Avaliação</a></li>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="ufc-brand-container">
+                <img src="images/logo-ufc.png" alt="UFC Logo" class="logo-top">
+                <div class="ufc-text-block">
+                    <span class="ufc-title">UNIVERSIDADE</span>
+                    <span class="ufc-title">FEDERAL DO CEARÁ</span>
+                    <span class="ufc-subtitle">CAMPUS DE RUSSAS</span>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="main-container">
+        
+        <div class="profile-card-top">
+            <div class="profile-identity">
+                <div class="big-avatar">
+                    <img src="images/sobre-aep.png" alt="Ícone Ajuda">
+                </div>
+                <div class="identity-text">
+                    <h1>Central de Ajuda</h1>
+                    <p class="subtitle">PERGUNTAS FREQUENTES</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="help-search-container">
+            <input type="text" id="help-search" class="help-search-input" placeholder="Pesquise sua dúvida..." onkeyup="filtrarAjuda()">
+            <span class="material-icons help-search-icon">search</span>
+        </div>
+
+        <div class="faq-list" id="faq-list">
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Como faço para recuperar um item perdido?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Verifique na lista de "Itens Recuperados" se ele foi cadastrado. Caso encontre, clique em "Informações" e dirija-se ao local indicado (geralmente a Portaria) portando um documento com foto.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Onde ficam guardados os itens encontrados?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>A maioria dos itens é centralizada na Portaria Principal do Campus de Russas ou na Secretaria Acadêmica, dependendo de onde foi achado.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Por quanto tempo os itens ficam guardados?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Os itens permanecem armazenados por 90 dias (3 meses). Após esse prazo, itens não reclamados podem ser doados a instituições de caridade ou descartados.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Como cadastro um item que eu perdi?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Faça login no sistema e acesse a opção "Cadastrar Item Perdido". Preencha a descrição, data e local da perda. Isso ajuda a administração a entrar em contato caso encontrem algo parecido.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Preciso pagar alguma taxa?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Não. O serviço de Achados e Perdidos da UFC é gratuito para toda a comunidade acadêmica.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Encontrei um objeto, o que devo fazer?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Entregue o objeto o mais rápido possível a um servidor na Portaria ou Coordenação. Eles farão o cadastro oficial no sistema.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Outra pessoa pode buscar meu item por mim?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim, desde que apresente uma procuração simples assinada por você e uma cópia do seu documento de identidade, além do documento original dela.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>O que acontece com documentos (RG, CNH)?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Documentos pessoais são cadastrados no sistema. Após o prazo de 90 dias, se não forem reclamados, são enviados para a agência dos Correios central da cidade.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>E se for um item perecível (comida)?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Itens perecíveis ou que apresentem risco à saúde são descartados imediatamente e não são cadastrados no sistema.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Como provo que um item sem nome é meu?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Você precisará descrever detalhes específicos que não estão visíveis na foto (ex: um arranhão na tela, o fundo de tela do celular, conteúdo da carteira) para confirmar a propriedade.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>O sistema envia notificação?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Atualmente não. Recomendamos verificar o site semanalmente. Estamos trabalhando em uma funcionalidade de alerta por e-mail.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <h3>Qual o horário de funcionamento para retirada?</h3>
+                    <span class="material-icons faq-arrow">expand_more</span>
+                </div>
+                <div class="faq-answer">
+                    <p>A retirada pode ser feita de segunda a sexta-feira, das 08h às 18h, na Portaria Principal do Campus.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="pagination" class="pagination"></div>
+
+        <div class="btn-back-area">
+            <button class="btn-back" onclick="window.location.href='index.html'">
+                <span class="material-icons">arrow_back</span>
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-cols">
+                <div class="col">
+                    <h4>Institucional</h4>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col">
+                    <h4>Sites Complementares</h4>
+                    <a href="http://www.campusrussas.ufc.br/" target="_blank">UFC - Campus Russas</a>
+                    <a href="https://www.ufc.br/" target="_blank">UFC - Universidade Federal do Ceará</a>
+                </div>
+                <div class="col logo-footer">
+                    <img src="images/logo-texto-aep.png" alt="Logo">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Achados e Perdidos - Nenhum dos direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            initPagination();
+        });
+    </script>
+</body>
+</html>

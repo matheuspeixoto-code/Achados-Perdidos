@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos UFC - Detalhes do Item</title>
+    
+    <link rel="stylesheet" href="css/produto.css">
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="details-body">
+
+    <header class="profile-header-bg">
+        <div class="header-top">
+            <div class="menu-container">
+                <button class="btn-menu-white" onclick="toggleMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+                <div id="dropdown-menu" class="dropdown-box hidden">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="perfil.html">Meu Perfil</a></li>
+                        <li><a href="pessoais.html">Dados Pessoais</a></li>
+                        <li class="separator-menu"></li>
+                        <li><a href="recuperados.html">Itens Recuperados</a></li>
+                        <li><a href="avaliacao.html">Itens em Avaliação</a></li>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <img src="images/logo-texto-aep.png" alt="Achados e Perdidos" class="logo-site-top" style="width: 180px;">
+
+            <div class="header-user-info">
+                <div class="header-user-text">
+                    <h3>Mathues<br>Peixoto</h3>
+                </div>
+                <div class="header-avatar">
+                    <img src="images/user-sem-img.png" alt="Foto Perfil">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <div class="detail-card">
+            <div class="detail-header">
+                <div class="detail-img-box">
+                    <img src="images/item-exemplo.png" alt="Foto do Item">
+                </div>
+                <div class="detail-info">
+                    <h2>Cassaco</h2>
+                    <p>20/12/2025</p>
+                    <p>14h 30min</p>
+                </div>
+            </div>
+            <div class="detail-desc">
+                <p><strong>Descrição:</strong> Somos apaixonados por criar experiências que conectam pessoas, ideias e soluções. O item foi encontrado próximo ao bloco de engenharia de software e aparenta estar em bom estado. Acreditamos que cada projeto é único. Por isso, buscamos entender profundamente as necessidades de cada cliente.</p>
+            </div>
+        </div>
+
+        <form id="form-reclamacao" onsubmit="enviarReclamacao(event)">
+            <div class="form-card">
+                <label class="form-label">*Justificativa:</label>
+                <textarea class="form-textarea" placeholder="Descreva detalhes que comprovem que o item é seu..." required></textarea>
+                
+                <div class="upload-row">
+                    <label for="upload-prova" class="btn-upload">UPLOAD IMAGEM</label>
+                    <input type="file" id="upload-prova" style="display: none;" onchange="mostrarNomeArquivo()">
+                    
+                    <span id="file-name" class="file-name-display">Nenhum arquivo selecionado</span>
+                </div>
+            </div>
+
+            <div class="action-footer">
+                <button type="button" class="btn-back" onclick="window.history.back()">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                
+                <button type="submit" class="btn-reclamar">Reclamar</button>
+            </div>
+        </form>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-cols">
+                <div class="col">
+                    <h4>Institucional</h4>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col">
+                    <h4>Sites Complementares</h4>
+                    <a href="http://www.campusrussas.ufc.br/" target="_blank">UFC - Campus Russas</a>
+                    <a href="https://www.ufc.br/" target="_blank">UFC - Universidade Federal do Ceará</a>
+                </div>
+                <div class="col logo-footer">
+                    <img src="images/logo-texto-aep.png" alt="Logo">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Achados e Perdidos - Nenhum dos direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

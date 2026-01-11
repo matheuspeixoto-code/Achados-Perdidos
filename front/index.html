@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos UFC - Início</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="app-body">
+
+    <header class="main-header">
+        <div class="header-logo-container">
+            <img src="images/logo-topo-aep.png" alt="Achados e Perdidos UFC">
+        </div>
+
+        <div class="header-content">
+            <div class="menu-container">
+                <button class="btn-menu" onclick="toggleMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+                <div id="dropdown-menu" class="dropdown-box hidden">
+                    <ul>
+                        <li class="admin-only"><a href="cadastrar-item.html">Cadastrar Item</a></li>
+                        <li class="admin-only"><a href="itens-cadastrados.html">Itens Cadastrados</a></li>
+                        <li class="admin-only"><a href="avaliacao-pedidos.html">Pedidos para Avaliação</a></li>
+                        <li class="user-only"><a href="recuperados.html">Itens Recuperados</a></li>
+                        <li class="user-only"><a href="avaliacao.html">Itens em Avaliação</a></li>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="search-bar">
+                <select class="search-select" id="filter-select">
+                    <option value="Todos">Todos</option>
+                    <option value="Perdidos">Perdidos</option>
+                    <option value="Achados">Achados</option>
+                </select>
+                <div class="separator"></div>
+                <input type="text" placeholder="Pesquise">
+                <button class="search-btn">
+                    <span class="material-icons">search</span>
+                </button>
+            </div>
+
+            <div class="profile-container">
+                <div class="user-profile" onclick="toggleProfile()">
+                    <div class="user-info">
+                        <span class="name">Mathues</span>
+                        <span class="lastname">Peixoto</span>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/user-sem-img.png" alt="Perfil">
+                    </div>
+                </div>
+                
+                <div id="dropdown-profile" class="dropdown-box profile-pos hidden">
+                    <ul>
+                        <li><a href="perfil.html">Perfil</a></li>
+                        <li><a href="pessoais.html">Dados Pessoais</a></li>
+                        <li><a href="auth.html" class="logout-item">
+                            <span class="material-icons">logout</span> Sair
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="items-grid">
+            <article class="item-card">
+                <div class="card-img"><img src="images/exemplo-item.png" alt="Cassaco"></div>
+                <div class="card-info">
+                    <h3>Cassaco</h3>
+                    <p class="desc">Descrição:<br>Cassaco perdido nas proximidades da UFC</p>
+                    <button class="btn-card" onclick="window.location.href='produto.html'">INFORMAÇÕES</button>
+                </div>
+            </article>
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn arrow"><span class="material-icons">chevron_left</span></button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <span class="dots">...</span>
+            <button class="page-btn">12</button>
+            <button class="page-btn arrow"><span class="material-icons">chevron_right</span></button>
+        </div>
+
+        <div class="admin-fab-container">
+            <button class="fab-button" onclick="window.location.href='cadastrar-item.html'">
+                <span class="material-icons">add</span>
+            </button>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-cols">
+                <div class="col">
+                    <h4>Institucional</h4>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col">
+                    <h4>Sites Complementares</h4>
+                    <a href="http://www.campusrussas.ufc.br/" target="_blank">UFC - Campus Russas</a>
+                    <a href="https://www.ufc.br/" target="_blank">UFC - Universidade Federal do Ceará</a>
+                </div>
+                <div class="col logo-footer">
+                    <img src="images/logo-texto-aep.png" alt="Logo">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Achados e Perdidos - Nenhum dos direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
