@@ -3,8 +3,8 @@ import { IUserReposiory } from "@modules/users/implementations/IUserRepository";
 import { User } from "@modules/users/infra/typeorm/entities/User";
 import { AppError } from "@shared/infra/errors/AppError";
 import { inject, injectable } from "tsyringe";
-import { validarCPF } from "@modules/users/validação/ValidarCPF";
-import { validarEmail } from "@modules/users/validação/ValidarEmail";
+import { validarCPF } from "@modules/users/validacao/ValidarCPF";
+import { validarEmail } from "@modules/users/validacao/ValidarEmail";
 
 import { hash } from "bcrypt";
 import { IEnderecoRepository } from "@modules/users/implementations/IEnderecoRepository";
