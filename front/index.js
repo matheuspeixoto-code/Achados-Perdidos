@@ -1,5 +1,5 @@
 // URL do backend (Render)
-const API_URL = "https://achados-perdidos-liye.onrender.com/";
+const API_URL = "https://achados-perdidos-liye.onrender.com";
 
 /**
  * Carrega objetos do backend e renderiza na tela

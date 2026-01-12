@@ -1,6 +1,12 @@
 const API_URL = "https://achados-perdidos-liye.onrender.com";
 
 const form = document.getElementById("form-cadastrar-item");
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user || user.role !== "ADMIN") {
+  alert("Acesso restrito ao administrador");
+  window.location.href = "index.html";
+}
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();

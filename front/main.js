@@ -46,6 +46,37 @@ function hideAllSteps() {
     steps.forEach(step => step.classList.add('hidden'));
 }
 
+function logout() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
+  window.location.href = "auth.html";
+}
+
+
+function controlarPermissoes() {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const adminElements = document.querySelectorAll(".admin-only");
+  const userElements = document.querySelectorAll(".user-only");
+
+  if (!user) {
+    adminElements.forEach(el => el.classList.add("hidden"));
+    userElements.forEach(el => el.classList.add("hidden"));
+    return;
+  }
+
+  if (user.isAdmin === true) {
+    adminElements.forEach(el => el.classList.remove("hidden"));
+    userElements.forEach(el => el.classList.add("hidden"));
+  } else {
+    adminElements.forEach(el => el.classList.add("hidden"));
+    userElements.forEach(el => el.classList.remove("hidden"));
+  }
+}
+
+document.addEventListener("DOMContentLoaded", controlarPermissoes);
+
+
 /* =======================================================
    2. FUNÇÕES DE MENUS (DROPDOWNS E FILTROS)
    ======================================================= */
@@ -240,6 +271,17 @@ document.addEventListener("DOMContentLoaded", initPagination);
 /* =======================================================
    9. FUNÇÕES EXCLUSIVAS DO ADMIN (PORTARIA)
    ======================================================= */
+
+function protegerPaginaAdmin() {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user || user.isAdmin !== true) {
+    alert("Acesso restrito ao administrador");
+    window.location.href = "auth.html";
+  }
+}
+
+
 function previewItemAdmin(event) {
     const input = event.target;
     const preview = document.getElementById('img-preview-item');

@@ -14,9 +14,10 @@ export async function verificarAdmin(
 
     const user = await userRepository.findById(id)
 
-    if(!user.isAdmin){
-        throw new AppError("User isn't admin!")
+    if (!user || !user.isAdmin) {
+    throw new AppError("User isn't admin!", 403)
     }
+
 
     return next()
 }

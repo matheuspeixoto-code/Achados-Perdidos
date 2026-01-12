@@ -19,7 +19,8 @@ export async function verificarAutentificacao(request:Request,response:Response,
     try{
         const {sub :user_id} =verify(token,process.env.JWT_SECRET) as IPayload
         const userRepository = new UserRepository()
-        const user= userRepository.findById(user_id)
+        const user = await userRepository.findById(user_id)
+
         
         if(!user){
             throw new AppError("Usuário não existente", 401)
