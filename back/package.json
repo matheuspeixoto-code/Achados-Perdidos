@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc & tsc-alias",
     "start": "node dist/shared/infra/http/server.js",
     "dev": "ts-node-dev --transpile-only --respawn -r tsconfig-paths/register src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register -r dotenv/config ./node_modules/typeorm/cli -d ./src/data-source.ts",
