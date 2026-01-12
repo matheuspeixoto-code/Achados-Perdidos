@@ -1,34 +1,14 @@
-import "reflect-metadata"
-import "dotenv/config"
-
-
-import express, { NextFunction, Request, Response } from "express";
+import { app } from "./app";
 import { AppDataSource } from "@data";
 
-import { AppError } from "@shared/infra/errors/AppError";
-import { router } from "./routes";
+const PORT = process.env.PORT || 3333;
 
-import "@shared/container";
-
-const app = express();
-app.use(express.json());
-
-
-app.use(router)
-
-app.use((err:Error,request:Request,response:Response,next:NextFunction)=>{
-    if(err instanceof AppError){
-        return response.status(err.statusCode).json({message:err.message})
-    }
-
-    return response.status(500).json({
-        status:"error",
-        message:`nternal server error - ${err.message}`
-
-    })
-})
-
-AppDataSource.initialize().then(()=>{
-    app.listen(3333, () => console.log("Server rodando"));
-
-})
+AppDataSource.initialize()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Servidor rodando na porta ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Erro ao conectar no banco:", error);
+  });
