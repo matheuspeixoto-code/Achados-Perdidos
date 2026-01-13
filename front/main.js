@@ -294,10 +294,13 @@ function protegerRotas() {
      ROTAS QUE EXIGEM LOGIN
   ============================= */
   const paginasProtegidas = [
+    "index.html",
     "perfil.html",
     "pessoais.html",
     "avaliacao.html",
-    "minhas-solicitacoes.html"
+    "minhas-solicitacoes.html",
+    "recuperados.html",
+    "produto.html"
   ];
 
   /* =============================

@@ -48,11 +48,11 @@
             <div class="profile-container">
                 <div class="user-profile" onclick="toggleProfile()">
                     <div class="user-info">
-                        <span class="name">Mathues</span>
-                        <span class="lastname">Peixoto</span>
+                        <span class="name" id="header-user-nome">Login</span>
+                        <span class="lastname" id="header-user-sobrenome"></span>
                     </div>
                     <div class="avatar">
-                        <img src="images/user-sem-img.png" alt="Perfil">
+                        <img id="header-user-avatar" src="images/user-sem-img.png" alt="Perfil">
                     </div>
                 </div>
                 
@@ -111,6 +111,29 @@
 
     <script src="main.js"></script>
     <script src="index.js"></script>
+    <script>
+        // Verificar login na página inicial
+        document.addEventListener("DOMContentLoaded", function() {
+            const token = localStorage.getItem("token");
+            const user = JSON.parse(localStorage.getItem("user"));
+            
+            // Se não estiver logado, redirecionar para auth
+            if (!token || !user) {
+                window.location.href = "auth.html";
+                return;
+            }
+            
+            // Carregar dados do usuário no header
+            if (user.nome) {
+                const nomePartes = user.nome.split(" ");
+                document.getElementById("header-user-nome").textContent = nomePartes[0];
+                document.getElementById("header-user-sobrenome").textContent = nomePartes.slice(1).join(" ");
+            }
+            if (user.avatar) {
+                document.getElementById("header-user-avatar").src = user.avatar;
+            }
+        });
+    </script>
 
 </body>
 </html>

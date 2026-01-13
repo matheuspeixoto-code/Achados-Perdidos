@@ -29,11 +29,48 @@ async function carregarPerfil() {
 }
 
 function exibirPerfil(user) {
-  document.getElementById("user-nome").textContent = user.nome_completo;
-  document.getElementById("user-email").textContent = user.email;
-  document.getElementById("user-cpf").textContent = user.cpf;
-  document.getElementById("user-telefone").textContent = user.telefone;
-  document.getElementById("user-avatar").src = user.avatar || "images/default-avatar.png";
+  // Preencher título com nome completo
+  const titleElement = document.querySelector(".profile-identity h1");
+  if (titleElement) {
+    titleElement.textContent = user.nome || "Usuário";
+  }
+
+  // Carregar avatar
+  const imgElement = document.getElementById("img-preview");
+  if (imgElement && user.avatar) {
+    imgElement.src = user.avatar;
+  }
+
+  // Preencher formulário com dados do usuário
+  const usuarioInput = document.querySelector("input[name='usuario']");
+  if (usuarioInput) {
+    usuarioInput.value = user.nome || "";
+  }
+
+  const telefoneInput = document.querySelector("input[name='telefone']");
+  if (telefoneInput) {
+    telefoneInput.value = user.telefone || "";
+  }
+
+  const emailInput = document.querySelector("input[name='email']");
+  if (emailInput) {
+    emailInput.value = user.email || "";
+  }
+
+  const cidadeInput = document.querySelector("input[name='cidade']");
+  if (cidadeInput && user.endereco) {
+    cidadeInput.value = user.endereco.cidade || "";
+  }
+
+  const estadoInput = document.querySelector("input[name='estado']");
+  if (estadoInput && user.endereco) {
+    estadoInput.value = user.endereco.estado || "";
+  }
+
+  const sexoInput = document.querySelector("input[name='sexo']");
+  if (sexoInput && user.sexo) {
+    sexoInput.value = user.sexo;
+  }
 }
 
 async function atualizarAvatar(e) {
