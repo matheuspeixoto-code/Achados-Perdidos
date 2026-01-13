@@ -10,6 +10,7 @@
     "typeorm": "ts-node-dev -r tsconfig-paths/register -r dotenv/config ./node_modules/typeorm/cli -d ./src/data-source.ts",
     "typeorm:create": "ts-node-dev ./node_modules/typeorm/cli",
     "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/http/seed/Admin.ts",
+    "seed:update-admin-password": "ts-node-dev -r tsconfig-paths/register src/shared/infra/http/seed/UpdateAdminPassword.ts",
     "migration:run": "typeorm migration:run -d dist/data-source.js"
   },
   "keywords": [],
