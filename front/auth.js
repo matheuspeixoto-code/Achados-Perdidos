@@ -15,7 +15,10 @@ if (loginForm) {
     }
 
     try {
-      const response = await fetch(`${API_URL}/secao`, {
+      /* ===============================
+        LOGIN → OBTÉM TOKEN
+      =============================== */
+      const loginResponse = await fetch(`${API_URL}/secao`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,24 +26,40 @@ if (loginForm) {
         body: JSON.stringify({ username, senha }),
       });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => null);
-        throw new Error(errorData?.message || "Usuário ou senha inválidos");
+      if (!loginResponse.ok) {
+        throw new Error("Usuário ou senha inválidos");
       }
 
-      const data = await response.json();
+      const { token } = await loginResponse.json();
 
-
-      if (!data.token || !data.user) {
-        throw new Error("Resposta inválida do servidor");
+      if (!token) {
+        throw new Error("Token não recebido");
       }
 
-      // salva sessão
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("token", token);
 
-      // redireciona conforme o tipo de usuário
-      if (data.user.isAdmin) {
+      /* ===============================
+        BUSCA DADOS DO USUÁRIO
+      =============================== */
+      const userResponse = await fetch(`${API_URL}/User/myUser`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!userResponse.ok) {
+        throw new Error("Erro ao obter dados do usuário");
+      }
+
+      const user = await userResponse.json();
+
+      localStorage.setItem("user", JSON.stringify(user));
+
+      /* ===============================
+        REDIRECIONAMENTO
+      =============================== */
+      if (user.isAdmin) {
         window.location.href = "admin-perfil.html";
       } else {
         window.location.href = "index.html";

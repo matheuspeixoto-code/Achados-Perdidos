@@ -269,43 +269,60 @@ function filtrarAjuda() {
 document.addEventListener("DOMContentLoaded", initPagination);
 
 /* =======================================================
-   9. FUNÇÕES EXCLUSIVAS DO ADMIN (PORTARIA)
+   9. PROTEÇÃO DE ROTAS (AUTENTICAÇÃO + ADMIN)
    ======================================================= */
 
-function protegerPaginaAdmin() {
+function protegerRotas() {
+  const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
-  if (!user || user.isAdmin !== true) {
-    alert("Acesso restrito ao administrador");
+  const paginaAtual = window.location.pathname.split("/").pop();
+
+  /* =============================
+     ROTAS ADMIN
+  ============================= */
+  const paginasAdmin = [
+    "admin-perfil.html",
+    "admin-posts.html",
+    "admin-avaliar.html",
+    "cadastrar-item.html",
+    "editar-item.html",
+    "confirmar-avaliacao.html"
+  ];
+
+  /* =============================
+     ROTAS QUE EXIGEM LOGIN
+  ============================= */
+  const paginasProtegidas = [
+    "perfil.html",
+    "pessoais.html",
+    "avaliacao.html",
+    "minhas-solicitacoes.html"
+  ];
+
+  /* =============================
+     BLOQUEIO SEM LOGIN
+  ============================= */
+  if (
+    (paginasProtegidas.includes(paginaAtual) ||
+     paginasAdmin.includes(paginaAtual)) &&
+    (!token || !user)
+  ) {
+    alert("Você precisa estar logado para acessar esta página.");
     window.location.href = "auth.html";
+    return;
+  }
+
+  /* =============================
+     BLOQUEIO ADMIN
+  ============================= */
+  if (paginasAdmin.includes(paginaAtual) && user?.isAdmin !== true) {
+    alert("Acesso restrito ao administrador.");
+    window.location.href = "index.html";
   }
 }
 
-
-function previewItemAdmin(event) {
-    const input = event.target;
-    const preview = document.getElementById('img-preview-item');
-    const fileName = document.getElementById('file-name-admin');
-
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            preview.src = e.target.result;
-            preview.style.opacity = "1";
-        };
-        reader.readAsDataURL(input.files[0]);
-        
-        // Exibe o nome do arquivo para o Admin também
-        if (fileName) {
-            fileName.textContent = input.files[0].name;
-            fileName.style.color = "var(--navy-blue)";
-            fileName.style.fontWeight = "bold";
-        }
-    }
-}
-
-function salvarNovoItem(event) {
-    event.preventDefault();
-    alert("Item cadastrado com sucesso!\nEle agora está visível para todos os alunos na página inicial.");
-    window.location.href = 'index.html';
-}
+document.addEventListener("DOMContentLoaded", () => {
+  protegerRotas();
+  controlarPermissoes();
+});
