@@ -49,23 +49,23 @@
         <div class="detail-card">
             <div class="detail-header">
                 <div class="detail-img-box">
-                    <img src="images/item-exemplo.png" alt="Foto do Item">
+                    <img id="objeto-imagem" src="images/item-exemplo.png" alt="Foto do Item">
                 </div>
                 <div class="detail-info">
-                    <h2>Cassaco</h2>
-                    <p>20/12/2025</p>
-                    <p>14h 30min</p>
+                    <h2 id="objeto-nome">Carregando...</h2>
+                    <p id="objeto-data"></p>
+                    <p id="objeto-hora"></p>
                 </div>
             </div>
             <div class="detail-desc">
-                <p><strong>Descrição:</strong> Somos apaixonados por criar experiências que conectam pessoas, ideias e soluções. O item foi encontrado próximo ao bloco de engenharia de software e aparenta estar em bom estado. Acreditamos que cada projeto é único. Por isso, buscamos entender profundamente as necessidades de cada cliente.</p>
+                <p id="objeto-descricao"><strong>Descrição:</strong> Carregando...</p>
             </div>
         </div>
 
-        <form id="form-reclamacao" onsubmit="enviarReclamacao(event)">
+        <form id="form-reclamacao" onsubmit="solicitarObjeto(event)">
             <div class="form-card">
                 <label class="form-label">*Justificativa:</label>
-                <textarea class="form-textarea" placeholder="Descreva detalhes que comprovem que o item é seu..." required></textarea>
+                <textarea id="justificativa" class="form-textarea" placeholder="Descreva detalhes que comprovem que o item é seu..." required></textarea>
                 
                 <div class="upload-row">
                     <label for="upload-prova" class="btn-upload">UPLOAD IMAGEM</label>
@@ -73,6 +73,8 @@
                     
                     <span id="file-name" class="file-name-display">Nenhum arquivo selecionado</span>
                 </div>
+
+                <input type="hidden" id="objeto-id">
             </div>
 
             <div class="action-footer">
@@ -111,5 +113,7 @@
     </footer>
 
     <script src="main.js"></script>
+    <script src="produto.js"></script>
+
 </body>
 </html>
