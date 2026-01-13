@@ -8,13 +8,9 @@ async function create() {
     await AppDataSource.initialize();
   }
 
-  if (!process.env.ADMIN_PASSWORD) {
-    throw new Error("ADMIN_PASSWORD não definida");
-  }
-
   const userId = uuidV4();
   const enderecoId = uuidV4();
-  const password = await hash(process.env.ADMIN_PASSWORD, 8);
+  const password = await hash("admin", 8);
 
 
   await AppDataSource.query(
@@ -37,11 +33,11 @@ async function create() {
     `,
     [
       userId,
-      process.env.ADMIN_CPF,
-      process.env.ADMIN_CONTATO,
-      "Administrador",
-      process.env.ADMIN_NAME,
-      process.env.ADMIN_EMAIL,
+      "11144477735",
+      "11999999999",
+      "admin",
+      "Admin",
+      "admin@achados-perdidos.com",
       password,
       "masculino",
       "2002-08-15",
