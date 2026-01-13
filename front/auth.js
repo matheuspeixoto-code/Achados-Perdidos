@@ -14,7 +14,14 @@ if (loginForm) {
       return;
     }
 
+    const submitButton = loginForm.querySelector("button[type='submit']");
+    const originalText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = "Entrando...";
+
     try {
+      console.log("Tentando login com email:", email);
+      
       // Login → token
       const loginResponse = await fetch(`${API_URL}/secao`, {
         method: "POST",
@@ -22,8 +29,11 @@ if (loginForm) {
         body: JSON.stringify({ email, senha }),
       });
 
+      console.log("Response status:", loginResponse.status);
+
       if (!loginResponse.ok) {
         const errorData = await loginResponse.json().catch(() => ({}));
+        console.error("Erro na resposta:", errorData);
         throw new Error(
           errorData.message || "Usuário ou senha inválidos"
         );
@@ -31,6 +41,7 @@ if (loginForm) {
 
       const { token } = await loginResponse.json();
       localStorage.setItem("token", token);
+      console.log("Token recebido");
 
       // Dados do usuário
       const userResponse = await fetch(`${API_URL}/User/myUser`, {
@@ -43,6 +54,7 @@ if (loginForm) {
 
       const user = await userResponse.json();
       localStorage.setItem("user", JSON.stringify(user));
+      console.log("Usuário:", user);
 
       // Redirecionamento
       window.location.href = user.isAdmin
@@ -52,6 +64,8 @@ if (loginForm) {
     } catch (error) {
       console.error("Erro de login:", error);
       alert(error.message || "Erro ao realizar login");
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
     }
   });
 }
