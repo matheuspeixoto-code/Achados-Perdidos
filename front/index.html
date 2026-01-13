@@ -72,14 +72,10 @@
     <main class="main-container">
         <div class="items-grid"></div>
 
-        <div class="pagination">
-            <button class="page-btn arrow"><span class="material-icons">chevron_left</span></button>
-            <button class="page-btn active">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <span class="dots">...</span>
-            <button class="page-btn">12</button>
-            <button class="page-btn arrow"><span class="material-icons">chevron_right</span></button>
+        <div class="pagination" id="pagination-container" style="display: none;">
+            <button class="page-btn arrow" id="prev-btn" onclick="mudarPagina(-1)"><span class="material-icons">chevron_left</span></button>
+            <div id="pagination-buttons"></div>
+            <button class="page-btn arrow" id="next-btn" onclick="mudarPagina(1)"><span class="material-icons">chevron_right</span></button>
         </div>
 
         <div class="admin-fab-container">
