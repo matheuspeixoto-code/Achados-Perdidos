@@ -17,6 +17,10 @@ export async function verificarAutentificacao(request:Request,response:Response,
     const [,token]= authHeader.split(" ")
 
     try{
+        if (!process.env.JWT_SECRET) {
+            throw new AppError("JWT_SECRET não configurado no servidor", 500);
+        }
+
         const {sub :user_id} =verify(token,process.env.JWT_SECRET) as IPayload
         const userRepository = new UserRepository()
         const user = await userRepository.findById(user_id)

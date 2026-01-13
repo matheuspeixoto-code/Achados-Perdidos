@@ -40,6 +40,10 @@ class AutenticacaoUserUseCase{
             throw new AppError("Email ou senha incorreta")
         }
 
+        if (!process.env.JWT_SECRET) {
+            throw new AppError("JWT_SECRET não configurado no servidor");
+        }
+
         const token = sign({},process.env.JWT_SECRET,{
             subject:user.id,
             expiresIn:"1d"
