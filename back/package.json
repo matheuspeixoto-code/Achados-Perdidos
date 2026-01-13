@@ -11,6 +11,7 @@
     "typeorm:create": "ts-node-dev ./node_modules/typeorm/cli",
     "seed:admin": "ts-node-dev -r tsconfig-paths/register src/shared/infra/http/seed/Admin.ts",
     "seed:update-admin-password": "ts-node-dev -r tsconfig-paths/register src/shared/infra/http/seed/UpdateAdminPassword.ts",
+    "seed:exemplos": "ts-node-dev -r tsconfig-paths/register src/shared/infra/http/seed/SeedExemplos.ts",
     "migration:run": "typeorm migration:run -d dist/data-source.js"
   },
   "keywords": [],
