@@ -29,14 +29,22 @@ async function carregarObjeto() {
 
 function exibirObjeto(objeto) {
   document.getElementById("objeto-nome").textContent = objeto.nome;
-  document.getElementById("objeto-descricao").textContent = objeto.descricao;
-  document.getElementById("objeto-local").textContent = `Local: ${objeto.local}`;
-  document.getElementById("objeto-data").textContent = `Data: ${objeto.dataEncontrada}`;
-  document.getElementById("objeto-hora").textContent = `Hora: ${objeto.hora}`;
+  
+  const descricaoElement = document.getElementById("objeto-descricao");
+  descricaoElement.innerHTML = `<strong>Descrição:</strong> ${objeto.descricao || "Sem descrição"}`;
+  
+  const dataElement = document.getElementById("objeto-data");
+  dataElement.textContent = `Data: ${objeto.dataEncontrada || "Não especificada"}`;
+  
+  const horaElement = document.getElementById("objeto-hora");
+  horaElement.textContent = `Hora: ${objeto.hora || "Não especificada"}`;
+  
   document.getElementById("objeto-id").value = objeto.id;
 }
 
-async function solicitarObjeto() {
+async function solicitarObjeto(event) {
+  event.preventDefault();
+
   if (!verificarLogin()) {
     window.location.href = "auth.html";
     return;
