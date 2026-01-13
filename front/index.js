@@ -1,16 +1,16 @@
-// URL do backend (Render)
 const API_URL = "https://achados-perdidos-liye.onrender.com";
 
-/**
- * Carrega objetos do backend e renderiza na tela
- */
 async function carregarObjetos() {
   try {
     const response = await fetch(`${API_URL}/Objetos`);
-    const objetos = await response.json();
+    if (!response.ok) throw new Error("Erro ao buscar objetos");
 
+    const objetos = await response.json();
     const grid = document.querySelector(".items-grid");
-    grid.innerHTML = ""; // remove card de exemplo
+
+    if (!grid) return;
+
+    grid.innerHTML = "";
 
     objetos.forEach(obj => {
       const card = document.createElement("article");
@@ -18,7 +18,7 @@ async function carregarObjetos() {
 
       card.innerHTML = `
         <div class="card-img">
-          <img src="${obj.imagem_url || "images/exemplo-item.png"}" alt="${obj.nome}">
+          <img src="images/exemplo-item.png" alt="${obj.nome}">
         </div>
         <div class="card-info">
           <h3>${obj.nome}</h3>
@@ -40,5 +40,4 @@ async function carregarObjetos() {
   }
 }
 
-// Executa quando a página carregar
 document.addEventListener("DOMContentLoaded", carregarObjetos);

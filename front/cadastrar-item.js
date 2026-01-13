@@ -2,20 +2,16 @@ const API_URL = "https://achados-perdidos-liye.onrender.com";
 
 const form = document.getElementById("form-cadastrar-item");
 const user = JSON.parse(localStorage.getItem("user"));
+const token = localStorage.getItem("token");
 
-if (!user || user.role !== "ADMIN") {
+// Proteção da página
+if (!token || !user || user.isAdmin !== true) {
   alert("Acesso restrito ao administrador");
   window.location.href = "index.html";
 }
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-
-  const token = localStorage.getItem("token");
-  if (!token) {
-    alert("Você precisa estar logado para cadastrar um item.");
-    return;
-  }
 
   const data = {
     nome: document.getElementById("titulo").value,
@@ -31,14 +27,13 @@ form.addEventListener("submit", async (e) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
 
     if (!response.ok) {
-      const erro = await response.json();
-      throw new Error(erro.message || "Erro ao cadastrar item");
+      throw new Error("Erro ao cadastrar item");
     }
 
     alert("Item cadastrado com sucesso!");

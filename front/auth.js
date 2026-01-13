@@ -15,14 +15,10 @@ if (loginForm) {
     }
 
     try {
-      /* ===============================
-        LOGIN → OBTÉM TOKEN
-      =============================== */
+      // Login → token
       const loginResponse = await fetch(`${API_URL}/secao`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, senha }),
       });
 
@@ -31,43 +27,28 @@ if (loginForm) {
       }
 
       const { token } = await loginResponse.json();
-
-      if (!token) {
-        throw new Error("Token não recebido");
-      }
-
       localStorage.setItem("token", token);
 
-      /* ===============================
-        BUSCA DADOS DO USUÁRIO
-      =============================== */
+      // Dados do usuário
       const userResponse = await fetch(`${API_URL}/User/myUser`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       if (!userResponse.ok) {
-        throw new Error("Erro ao obter dados do usuário");
+        throw new Error("Erro ao buscar dados do usuário");
       }
 
       const user = await userResponse.json();
-
       localStorage.setItem("user", JSON.stringify(user));
 
-      /* ===============================
-        REDIRECIONAMENTO
-      =============================== */
-      if (user.isAdmin) {
-        window.location.href = "admin-perfil.html";
-      } else {
-        window.location.href = "index.html";
-      }
+      // Redirecionamento
+      window.location.href = user.isAdmin
+        ? "admin-perfil.html"
+        : "index.html";
 
     } catch (error) {
-      alert(error.message || "Erro ao realizar login");
       console.error(error);
+      alert(error.message || "Erro ao realizar login");
     }
   });
 }
