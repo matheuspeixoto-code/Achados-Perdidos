@@ -33,12 +33,25 @@
 
             <img src="images/logo-texto-aep.png" alt="Achados e Perdidos" class="logo-site-top" style="width: 180px;">
 
-            <div class="header-user-info">
-                <div class="header-user-text">
-                    <h3>Mathues<br>Peixoto</h3>
+            <div class="profile-container">
+                <div class="user-profile" onclick="toggleProfile()">
+                    <div class="user-info">
+                        <span class="name">Mathues</span>
+                        <span class="lastname">Peixoto</span>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/user-sem-img.png" alt="Perfil">
+                    </div>
                 </div>
-                <div class="header-avatar">
-                    <img src="images/user-sem-img.png" alt="Foto Perfil">
+                
+                <div id="dropdown-profile" class="dropdown-box profile-pos hidden">
+                    <ul>
+                        <li><a href="perfil.html">Perfil</a></li>
+                        <li><a href="pessoais.html">Dados Pessoais</a></li>
+                        <li><a href="auth.html" class="logout-item">
+                            <span class="material-icons">logout</span> Sair
+                        </a></li>
+                    </ul>
                 </div>
             </div>
         </div>
