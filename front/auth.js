@@ -1,5 +1,13 @@
 const API_URL = "https://achados-perdidos-liye.onrender.com";
 
+// Função para mostrar/esconder senha
+function togglePasswordVisibility(fieldId) {
+  const field = document.getElementById(fieldId);
+  const isPassword = field.type === "password";
+  
+  field.type = isPassword ? "text" : "password";
+}
+
 const loginForm = document.getElementById("login-form");
 
 if (loginForm) {

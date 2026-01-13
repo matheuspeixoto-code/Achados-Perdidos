@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achados e Perdidos UFC - Acesso</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <main class="auth-container">
@@ -28,7 +29,12 @@
 
                     <div class="input-group">
                         <label for="password">Senha</label>
-                        <input type="password" id="password" placeholder="Digite sua senha" autocomplete="current-password" required>
+                        <div style="position: relative; display: flex; align-items: center;">
+                            <input type="password" id="password" placeholder="Digite sua senha" autocomplete="current-password" required style="flex: 1;">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer; color: #555; padding: 5px;">
+                                <span class="material-icons" style="font-size: 20px;">visibility</span>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="auth-footer">
@@ -126,7 +132,12 @@
                         </div>
                         <div class="input-group">
                             <label>Senha:</label>
-                            <input type="password" name="senha_final" placeholder="Digite sua senha" autocomplete="new-password" required>
+                            <div style="position: relative; display: flex; align-items: center;">
+                                <input type="password" name="senha_final" id="senha_cadastro" placeholder="Digite sua senha" autocomplete="new-password" required style="flex: 1;">
+                                <button type="button" class="toggle-password" onclick="togglePasswordVisibility('senha_cadastro')" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer; color: #555; padding: 5px;">
+                                    <span class="material-icons" style="font-size: 20px;">visibility</span>
+                                </button>
+                            </div>
                         </div>
                         <div class="step-nav space-between align-center">
                             <button type="button" class="btn-icon prev-step" onclick="prevStep(3)">
