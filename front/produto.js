@@ -34,7 +34,8 @@ function exibirObjeto(objeto) {
   descricaoElement.innerHTML = `<strong>Descrição:</strong> ${objeto.descricao || "Sem descrição"}`;
   
   const dataElement = document.getElementById("objeto-data");
-  dataElement.textContent = `Data: ${objeto.dataEncontrada || "Não especificada"}`;
+  const dataFormatada = objeto.dataEncontrada ? objeto.dataEncontrada.split("T")[0] : "Não especificada";
+  dataElement.textContent = `Data: ${dataFormatada}`;
   
   const horaElement = document.getElementById("objeto-hora");
   horaElement.textContent = `Hora: ${objeto.hora || "Não especificada"}`;
