@@ -52,34 +52,92 @@ body.details-body {
 
 /* Dropdown Menu */
 .menu-container { position: relative; }
+/* DROPDOWNS */
 .dropdown-box {
-    position: absolute; top: 55px;
+    position: absolute;
+    top: 55px;
     background-color: var(--white);
-    border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    width: 200px; z-index: 1000; padding: 10px 0; left: 0; 
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    width: 200px;
+    z-index: 1000;
+    padding: 10px 0;
 }
-.dropdown-box ul { list-style: none; }
+
+.profile-pos {
+    right: 0;
+    width: 180px;
+}
+
+.dropdown-box ul {
+    list-style: none;
+}
+
 .dropdown-box li a {
-    display: block; padding: 10px 20px;
-    text-decoration: none; color: var(--navy-blue);
-    font-family: var(--font-title); font-weight: bold;
-    font-size: 0.95rem; transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: var(--navy-blue);
+    font-family: var(--font-serif);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.2s;
 }
-.dropdown-box li a:hover { background-color: #f0f0f0; }
+
+.dropdown-box li a:hover {
+    background-color: #f0f0f0;
+}
+
+.logout-item {
+    color: var(--accent-red) !important;
+    gap: 8px;
+}
+
 .separator-menu { border-top: 1px solid #eee; margin: 5px 0; }
 .hidden { display: none !important; }
 
 /* Info do Usuário (Canto Direito) */
-.header-user-info {
-    display: flex; align-items: center; gap: 12px; color: var(--white);
+/* PERFIL – PADRÃO IGUAL AO INDEX */
+.profile-container {
+    position: relative;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     cursor: pointer;
 }
-.header-user-text h3 { font-size: 1rem; line-height: 1.1; text-align: right; }
-.header-avatar {
-    width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--white);
-    overflow: hidden;
+
+.user-info {
+    text-align: right;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--white); /* texto branco no header azul */
 }
-.header-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.user-info span {
+    display: block;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--white);
+    background-color: #E0E0E0;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 
 /* =========================================
    ESTRUTURA PRINCIPAL
