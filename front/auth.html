@@ -23,12 +23,12 @@
                 <form id="login-form">
                     <div class="input-group">
                         <label for="user">Usuário</label>
-                        <input type="text" id="user" placeholder="Digite o nome de usuário" required>
+                        <input type="text" id="user" placeholder="Digite o nome de usuário" autocomplete="email" required>
                     </div>
 
                     <div class="input-group">
                         <label for="password">Senha</label>
-                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                        <input type="password" id="password" placeholder="Digite sua senha" autocomplete="current-password" required>
                     </div>
 
                     <div class="auth-footer">
@@ -72,15 +72,15 @@
                     <div class="register-step hidden" id="step-2">
                         <div class="input-group">
                             <label>Nome de Usuário:</label>
-                            <input type="text" name="username" placeholder="Digite seu nome de usuário" required>
+                            <input type="text" name="username" placeholder="Digite seu nome de usuário" autocomplete="username" required>
                         </div>
                         <div class="input-group">
                             <label>Telefone:</label>
-                            <input type="tel" name="telefone" placeholder="(00) 00000-0000" maxlength="15" inputmode="tel" required>
+                            <input type="tel" name="telefone" placeholder="(00) 00000-0000" maxlength="15" inputmode="tel" autocomplete="tel" required>
                         </div>
                         <div class="input-group">
                             <label>Email:</label>
-                            <input type="email" name="email" placeholder="exemplo@email.com" required>
+                            <input type="email" name="email" placeholder="exemplo@email.com" autocomplete="email" required>
                         </div>
                         <div class="step-nav space-between">
                             <button type="button" class="btn-icon prev-step" onclick="prevStep(1)">
@@ -126,7 +126,7 @@
                         </div>
                         <div class="input-group">
                             <label>Senha:</label>
-                            <input type="password" name="senha_final" placeholder="Digite sua senha" required>
+                            <input type="password" name="senha_final" placeholder="Digite sua senha" autocomplete="new-password" required>
                         </div>
                         <div class="step-nav space-between align-center">
                             <button type="button" class="btn-icon prev-step" onclick="prevStep(3)">

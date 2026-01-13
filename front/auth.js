@@ -6,10 +6,10 @@ if (loginForm) {
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const username = document.getElementById("user").value.trim();
+    const email = document.getElementById("user").value.trim();
     const senha = document.getElementById("password").value.trim();
 
-    if (!username || !senha) {
+    if (!email || !senha) {
       alert("Preencha todos os campos");
       return;
     }
@@ -19,11 +19,14 @@ if (loginForm) {
       const loginResponse = await fetch(`${API_URL}/secao`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, senha }),
+        body: JSON.stringify({ email, senha }),
       });
 
       if (!loginResponse.ok) {
-        throw new Error("Usuário ou senha inválidos");
+        const errorData = await loginResponse.json().catch(() => ({}));
+        throw new Error(
+          errorData.message || "Usuário ou senha inválidos"
+        );
       }
 
       const { token } = await loginResponse.json();
@@ -47,7 +50,7 @@ if (loginForm) {
         : "index.html";
 
     } catch (error) {
-      console.error(error);
+      console.error("Erro de login:", error);
       alert(error.message || "Erro ao realizar login");
     }
   });
