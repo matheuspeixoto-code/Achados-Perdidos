@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos UFC - Dados Pessoais</title>
+    <link rel="stylesheet" href="css/perfil.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="profile-body">
+
+    <header class="profile-header-bg">
+        <div class="header-top">
+            <div class="menu-container">
+                <button class="btn-menu-white" onclick="toggleMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+                
+                <div id="dropdown-menu" class="dropdown-box hidden">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="perfil.html">Meu Perfil</a></li>
+                        <li><a href="pessoais.html">Dados Pessoais</a></li>
+                        <li class="separator-menu"></li>
+                        <li><a href="recuperados.html">Itens Recuperados</a></li>
+                        <li><a href="avaliacao.html">Itens em Avaliação</a></li>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <img src="images/logo-topo-aep.png" alt="Achados e Perdidos" class="logo-top">
+        </div>
+    </header>
+
+    <main class="profile-container">
+        
+        <div class="profile-card-top">
+            <div class="profile-identity">
+                <div class="big-avatar">
+                    <img src="images/user-sem-img.png" alt="Foto de Perfil">
+                </div>
+                <div class="identity-text">
+                    <h1>Mathues Peixoto Pereira</h1>
+                    <p class="subtitle">DADOS PESSOAIS</p>
+                </div>
+            </div>
+
+            <div class="profile-right-side">
+                <a href="perfil.html" class="view-data-link">
+                    <span class="material-icons" style="font-size: 1rem;">arrow_back</span> Ver Dados de Perfil
+                </a>
+                
+                <a href="auth.html" class="logout-link">
+                    <span class="material-icons">logout</span> 
+                    <span class="text-hover">Sair</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="info-list">
+            <form id="form-dados-pessoais">
+                
+                <div class="info-item">
+                    <span class="label">Nome Completo:</span>
+                    <input type="text" name="nome_completo" class="input-dado" value="Matheus Peixoto Pereira" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Data de Nascimento:</span>
+                    <input type="text" name="nascimento" class="input-dado" value="00/00/0000" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">CPF:</span>
+                    <input type="text" name="cpf" class="input-dado" value="000.000.000-00" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Login:</span>
+                    <input type="text" name="login" class="input-dado" value="Matheus" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Senha:</span>
+                    <input type="password" name="senha" class="input-dado" value="12345678" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Endereço:</span>
+                    <input type="text" name="endereco" class="input-dado" value="Rua dos Banzeiros, Centro nº 111" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Cidade:</span>
+                    <input type="text" name="cidade" class="input-dado" value="Russas - CE" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">CEP:</span>
+                    <input type="text" name="cep" class="input-dado" value="62900-000" readonly>
+                </div>
+            </form>
+
+            <div class="info-item">
+                <a href="#" class="delete-account-link">EXCLUIR CONTA</a>
+            </div>
+        </div>
+
+        <div class="profile-actions">
+            <button class="btn-back" onclick="window.location.href='perfil.html'">
+                <span class="material-icons">arrow_back</span>
+            </button>
+            
+            <button type="button" class="btn-edit-profile" id="btn-editar" onclick="habilitarEdicao()">
+                Editar Dados
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-cols">
+                <div class="col">
+                    <h4>Institucional</h4>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col">
+                    <h4>Sites Complementares</h4>
+                    <a href="http://www.campusrussas.ufc.br/" target="_blank">UFC - Campus Russas</a>
+                    <a href="https://www.ufc.br/" target="_blank">UFC - Universidade Federal do Ceará</a>
+                </div>
+                <div class="col logo-footer">
+                    <img src="images/logo-texto-aep.png" alt="Logo">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Achados e Perdidos - Nenhum dos direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

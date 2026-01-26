@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Admin - Portaria Russas</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="profile-body">
+    <header class="profile-header-bg">
+        <div class="header-top">
+            <div class="menu-container">
+                <button class="btn-menu-white" onclick="toggleMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+                <div id="dropdown-menu" class="dropdown-box hidden">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="admin-perfil.html">Perfil</a></li>
+                        <li><a href="cadastrar-item.html">Cadastrar Item</a></li>
+                        <li><a href="admin-posts.html">Itens Cadastrados</a></li>
+                        <li><a href="admin-avaliar.html">Pedidos para Avaliação</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <img src="images/logo-texto-aep.png" alt="Logo" class="logo-site-top">
+            <div class="header-user-info">
+                <div class="header-user-text"><h3>Portaria<br>Russas</h3></div>
+                <div class="header-avatar"><img src="images/logo-ufc.png" alt="Admin"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-container">
+        <div class="admin-profile-card">
+            <div class="big-avatar" style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; border: 4px solid var(--navy-blue);">
+                <img src="images/logo-ufc.png" alt="Logo UFC" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="identity-text">
+                <h1 style="font-size: 2.5rem; color: var(--navy-blue);">Portaria Russas</h1>
+                <p style="font-weight: bold; color: #666; letter-spacing: 2px;">PERFIL ADMINISTRATIVO</p>
+            </div>
+        </div>
+
+        <div class="form-card">
+            <div style="margin-bottom: 20px;">
+                <span style="font-weight: bold; color: var(--accent-red); display: block; margin-bottom: 5px;">Setor Responsável:</span>
+                <p style="font-size: 1.1rem;">Portaria Principal - Campus UFC Russas</p>
+            </div>
+            <div>
+                <span style="font-weight: bold; color: var(--accent-red); display: block; margin-bottom: 5px;">Email Institucional:</span>
+                <p style="font-size: 1.1rem;">portaria.russas@ufc.br</p>
+            </div>
+        </div>
+
+        <div class="action-footer" style="display: flex; justify-content: flex-start; margin-top: 30px;">
+            <button class="btn-back-admin" onclick="window.location.href='index.html'" style="background: none; border: none; cursor: pointer;">
+                <span class="material-icons" style="font-size: 2.5rem; color: var(--navy-blue);">arrow_back</span>
+            </button>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-cols">
+                <div class="col">
+                    <h4>Institucional</h4>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col">
+                    <h4>Sites Complementares</h4>
+                    <a href="http://www.campusrussas.ufc.br/" target="_blank">UFC - Campus Russas</a>
+                    <a href="https://www.ufc.br/" target="_blank">UFC - Universidade Federal do Ceará</a>
+                </div>
+                <div class="col logo-footer">
+                    <img src="images/logo-texto-aep.png" alt="Logo">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Achados e Perdidos - Nenhum dos direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script>protegerPaginaAdmin();</script>
+
+</body>
+</html>

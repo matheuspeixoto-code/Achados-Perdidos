@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos UFC - Acesso</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <main class="auth-container">
+        <aside class="auth-sidebar">
+            <h1 class="sidebar-title">BEM VINDO</h1>
+            <div class="sidebar-logo">
+                <img src="images/logo-aep.png" alt="Logo Achados e Perdidos">
+            </div>
+        </aside>
+
+        <section class="auth-content">
+            
+            <div id="login-container" class="auth-box">
+                <h2 class="auth-title">LOGIN</h2>
+                
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="user">Email</label>
+                        <input type="email" id="user" placeholder="Digite seu email" autocomplete="email" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="password">Senha</label>
+                        <div style="position: relative; display: flex; align-items: center;">
+                            <input type="password" id="password" placeholder="Digite sua senha" autocomplete="current-password" required style="flex: 1;">
+                            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer; color: #555; padding: 5px;">
+                                <span class="material-icons" style="font-size: 20px;">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="auth-footer">
+                        <p class="register-text">Não tem uma conta? <a href="#" onclick="toggleAuthScreen()" class="link-highlight">Cadastre-se</a></p>
+                        <button type="submit" class="btn-submit">ENTRAR</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="register-container" class="auth-box hidden">
+                <h2 class="auth-title">CADASTRO</h2>
+                
+                <form id="register-form">
+                    <div class="register-step" id="step-1">
+                        <div class="input-group">
+                            <label>Nome Completo:</label>
+                            <input type="text" name="nome" placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="input-group">
+                            <label>CPF:</label>
+                            <input type="text" name="cpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Data de Nascimento:</label>
+                            <input type="date" name="nascimento" required style="color: #555;">
+                        </div>
+                        <div class="input-group">
+                            <label>Sexualidade:</label>
+                            <input type="text" name="sexualidade" placeholder="Digite sua sexualidade">
+                        </div>
+                        <div class="step-nav space-between">
+                            <button type="button" class="btn-icon" onclick="toggleAuthScreen()" style="color: var(--accent-red);">
+                                &larr;
+                            </button>
+                            <button type="button" class="btn-icon next-step" onclick="nextStep(2)">
+                                &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="register-step hidden" id="step-2">
+                        <div class="input-group">
+                            <label>Nome de Usuário:</label>
+                            <input type="text" name="username" placeholder="Digite seu nome de usuário" autocomplete="username" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Telefone:</label>
+                            <input type="tel" name="telefone" placeholder="(00) 00000-0000" maxlength="15" inputmode="tel" autocomplete="tel" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Email:</label>
+                            <input type="email" name="email" placeholder="exemplo@email.com" autocomplete="email" required>
+                        </div>
+                        <div class="step-nav space-between">
+                            <button type="button" class="btn-icon prev-step" onclick="prevStep(1)">
+                                &larr;
+                            </button>
+                            <button type="button" class="btn-icon next-step" onclick="nextStep(3)">
+                                &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="register-step hidden" id="step-3">
+                        <div class="input-group">
+                            <label>CEP:</label>
+                            <input type="text" name="cep" placeholder="00000-000" maxlength="9" inputmode="numeric">
+                        </div>
+                        <div class="input-group">
+                            <label>Endereço:</label>
+                            <input type="text" name="endereco" placeholder="Digite o nome da sua rua">
+                        </div>
+                        <div class="input-group">
+                            <label>Bairro:</label>
+                            <input type="text" name="bairro" placeholder="Digite o nome do seu bairro">
+                        </div>
+                        <div class="input-group">
+                            <label>Número:</label>
+                            <input type="number" name="numero" placeholder="Nº da casa">
+                        </div>
+                        <div class="step-nav space-between">
+                            <button type="button" class="btn-icon prev-step" onclick="prevStep(2)">
+                                &larr;
+                            </button>
+                            <button type="button" class="btn-icon next-step" onclick="nextStep(4)">
+                                &rarr;
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="register-step hidden" id="step-4">
+                        <div class="input-group">
+                            <label>Login:</label>
+                            <input type="text" name="login_final" placeholder="Digite seu login para iniciar as sessões" autocomplete="username" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Senha:</label>
+                            <div style="position: relative; display: flex; align-items: center;">
+                                <input type="password" name="senha_final" id="senha_cadastro" placeholder="Digite sua senha" autocomplete="new-password" required style="flex: 1;">
+                                <button type="button" class="toggle-password" onclick="togglePasswordVisibility('senha_cadastro')" style="position: absolute; right: 10px; background: none; border: none; cursor: pointer; color: #555; padding: 5px;">
+                                    <span class="material-icons" style="font-size: 20px;">visibility</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="step-nav space-between align-center">
+                            <button type="button" class="btn-icon prev-step" onclick="prevStep(3)">
+                                &larr;
+                            </button>
+                            <button type="submit" class="btn-text-action">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

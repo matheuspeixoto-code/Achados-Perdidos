@@ -1,0 +1,227 @@
+/* =========================================
+   VARIÁVEIS
+   ========================================= */
+:root {
+    --navy-blue: #1E273D;
+    --cream-bg: #F3EFE0;
+    --white: #FFFFFF;
+    --accent-red: #C00;
+    --text-dark: #333;
+    --font-serif: 'Georgia', serif;
+    --font-sans: 'Arial', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body.profile-body {
+    background-color: var(--cream-bg);
+    font-family: var(--font-serif);
+    color: var(--navy-blue);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+}
+
+/* =========================================
+   HEADER AZUL (TOPO)
+   ========================================= */
+.profile-header-bg {
+    background-color: var(--navy-blue);
+    padding: 20px 40px; 
+    height: 170px; 
+    width: 100%;
+}
+
+.header-top {
+    width: 100%; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo-top { width: 200px; filter: brightness(0) invert(1); }
+
+.menu-container { position: relative; }
+
+.btn-menu-white {
+    background-color: var(--white); border: none; border-radius: 50%;
+    width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--navy-blue); font-size: 1.2rem;
+}
+
+/* DROPDOWN */
+.dropdown-box {
+    position: absolute; top: 60px;
+    background-color: var(--white);
+    border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    width: 200px; z-index: 1000; padding: 10px 0; left: 0; 
+}
+.dropdown-box ul { list-style: none; }
+.dropdown-box li a {
+    display: block; padding: 10px 20px;
+    text-decoration: none; color: var(--navy-blue);
+    font-family: var(--font-title); font-weight: bold;
+    font-size: 0.95rem; transition: background 0.2s; text-align: left;
+}
+.dropdown-box li a:hover { background-color: #f0f0f0; }
+.separator-menu { border-top: 1px solid #eee; margin: 5px 0; }
+.hidden { display: none !important; }
+
+
+/* =========================================
+   CONTEÚDO DO PERFIL
+   ========================================= */
+.profile-container {
+    max-width: 1000px; width: 100%; flex: 1; 
+    margin: 0 auto; padding: 0 40px; margin-bottom: 80px;
+}
+
+/* ÁREA DA IDENTIDADE (FOTO + NOME + LINKS) */
+.profile-card-top {
+    display: flex; justify-content: space-between; align-items: flex-end; 
+    margin-top: -85px; 
+    margin-bottom: 30px; 
+}
+
+.profile-identity { display: flex; align-items: center; gap: 20px; }
+
+/* AVATAR COM EFEITO DE CÂMERA */
+.big-avatar {
+    width: 160px; height: 160px; border-radius: 50%;
+    overflow: hidden; background-color: #ccc; 
+    border: 5px solid var(--cream-bg);
+    position: relative; /* Necessário para o ícone ficar por cima */
+}
+.big-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Camada da Câmera (Aparece no Hover) */
+.avatar-overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(30, 39, 61, 0.7);
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; /* Invisível por padrão */
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+.avatar-overlay .material-icons { color: #fff; font-size: 3rem; }
+.big-avatar:hover .avatar-overlay { opacity: 1; }
+
+
+.identity-text { padding-bottom: 35px; }
+
+/* NOME DO USUÁRIO */
+.identity-text h1 { 
+    font-size: 2.5rem; /* Ajustado para nomes longos */
+    color: var(--white); 
+    line-height: 1; 
+    margin-bottom: 5px; 
+    margin-top: 35px; /* Empurra para baixo */
+}
+
+/* SUBTÍTULO */
+.identity-text .subtitle {
+    font-family: var(--font-title); font-weight: bold; color: var(--navy-blue); 
+    text-transform: uppercase; letter-spacing: 1px; margin-left: 5px;
+    margin-top: 10px; /* Ajustado */
+    font-size: 1.5rem; display: block;
+}
+
+/* --- LADO DIREITO (LINKS DE NAVEGAÇÃO) --- */
+.profile-right-side {
+    display: flex; flex-direction: column; align-items: flex-end;
+    gap: 40px; 
+    transform: translateY(30px);
+}
+
+.view-data-link {
+    text-decoration: none; 
+    color: var(--navy-blue); 
+    font-family: var(--font-title); font-weight: bold; font-size: 1.1rem;
+    display: flex; align-items: center; gap: 5px; 
+    border-bottom: 1px solid transparent;
+}
+.view-data-link:hover { border-bottom: 1px solid var(--navy-blue); }
+
+.logout-link {
+    text-decoration: none; color: var(--accent-red); font-weight: bold;
+    font-size: 1.2rem; display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-title); margin-bottom: 0px; 
+}
+.logout-link:hover .text-hover { text-decoration: underline; }
+
+
+/* =========================================
+   LISTA E INPUTS
+   ========================================= */
+.info-list { display: flex; flex-direction: column; margin-left: 20px; }
+
+.info-item { 
+    font-size: 1.3rem; color: var(--navy-blue);
+    margin-bottom: 30px; 
+}
+
+.info-item .label { font-weight: bold; font-family: var(--font-serif); margin-right: 5px; }
+
+/* Inputs */
+.input-dado {
+    background: transparent; border: none;
+    font-family: var(--font-serif); font-size: 1.1rem;
+    color: var(--navy-blue); opacity: 0.7;
+    width: 100%; padding: 5px 0; outline: none; transition: all 0.3s;
+}
+.input-dado:not([readonly]) {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--navy-blue);
+    opacity: 1; padding-left: 10px; border-radius: 4px;
+}
+
+.delete-account-link {
+    color: var(--accent-red); font-family: var(--font-title); font-weight: bold;
+    text-decoration: none; text-transform: uppercase; font-size: 1.1rem;
+    display: inline-block; margin-top: 20px; transition: opacity 0.3s;
+}
+.delete-account-link:hover { opacity: 0.8; text-decoration: underline; }
+
+
+/* =========================================
+   BOTÕES INFERIORES
+   ========================================= */
+.profile-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 80px; }
+.btn-back {
+    background: none; border: none; cursor: pointer; color: var(--navy-blue); transform: scale(2); padding: 10px;
+}
+.btn-edit-profile {
+    background: none; border: none; cursor: pointer;
+    font-family: var(--font-serif); font-weight: bold; font-size: 1.5rem;
+    color: var(--navy-blue); border-bottom: 2px solid transparent;
+}
+.btn-edit-profile:hover { border-bottom: 2px solid var(--navy-blue); }
+
+
+/* =========================================
+   RODAPÉ
+   ========================================= */
+.main-footer {
+    background-color: var(--navy-blue); color: var(--white);
+    padding: 40px 20px; margin-top: 0px; width: 100%;
+}
+.footer-container { max-width: 1200px; margin: 0 auto; }
+.footer-cols {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; flex-wrap: wrap; gap: 30px; margin-bottom: 30px;
+}
+.col h4 { font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8; }
+
+.col a {
+    display: block; color: var(--white); text-decoration: none;
+    font-size: 0.85rem; margin-bottom: 8px; font-family: var(--font-sans);
+    transition: color 0.2s;
+}
+.col a:hover {
+    color: var(--accent-red);
+    text-decoration: underline;
+}
+
+.logo-footer img { width: 150px; filter: brightness(0) invert(1); }
+.copyright {
+    border-top: 1px solid rgba(255,255,255,0.2); text-align: center;
+    padding-top: 20px; font-size: 0.75rem; opacity: 0.7; font-family: var(--font-sans);
+}

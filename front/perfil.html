@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achados e Perdidos UFC - Meu Perfil</title>
+    <link rel="stylesheet" href="css/perfil.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="profile-body">
+
+    <header class="profile-header-bg">
+        <div class="header-top">
+            <div class="menu-container">
+                <button class="btn-menu-white" onclick="toggleMenu()">
+                    <span class="material-icons">menu</span>
+                </button>
+                
+                <div id="dropdown-menu" class="dropdown-box hidden">
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="perfil.html">Meu Perfil</a></li>
+                        <li><a href="pessoais.html">Dados Pessoais</a></li>
+                        <li class="separator-menu"></li>
+                        <li><a href="recuperados.html">Itens Recuperados</a></li>
+                        <li><a href="avaliacao.html">Itens em Avaliação</a></li>
+                        <li><a href="ajuda.html">Ajuda</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                    </ul>
+                </div>
+            </div>
+            <img src="images/logo-topo-aep.png" alt="Achados e Perdidos" class="logo-top">
+        </div>
+    </header>
+
+    <main class="profile-container">
+        
+        <div class="profile-card-top">
+            <div class="profile-identity">
+                <div class="big-avatar">
+                    <img id="img-preview" src="images/user-sem-img.png" alt="Foto de Perfil">
+                    
+                    <label for="input-foto" class="avatar-overlay">
+                        <span class="material-icons">photo_camera</span>
+                    </label>
+                    
+                    <input type="file" id="input-foto" accept="image/*" style="display: none;" onchange="previewImagem(event)">
+                </div>
+
+                <div class="identity-text">
+                    <h1>Mathues Peixoto Pereira</h1>
+                    <p class="subtitle">PERFIL</p>
+                </div>
+            </div>
+
+            <div class="profile-right-side">
+                <a href="pessoais.html" class="view-data-link">
+                    Ver Dados Pessoais <span class="material-icons" style="font-size: 1rem;">arrow_forward</span>
+                </a>
+                <a href="auth.html" class="logout-link">
+                    <span class="material-icons">logout</span> 
+                    <span class="text-hover">Sair</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="info-list">
+            <form id="form-perfil-resumo">
+                <div class="info-item">
+                    <span class="label">Nome de Usuário:</span>
+                    <input type="text" name="usuario" class="input-dado" value="Mathues" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Telefone:</span>
+                    <input type="tel" name="telefone" class="input-dado" value="(88) 9 9999-9999" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Email:</span>
+                    <input type="email" name="email" class="input-dado" value="emailexemplo@gmail.com" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Cidade:</span>
+                    <input type="text" name="cidade" class="input-dado" value="Russas" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Estado:</span>
+                    <input type="text" name="estado" class="input-dado" value="Ceará" readonly>
+                </div>
+
+                <div class="info-item">
+                    <span class="label">Sexo:</span>
+                    <input type="text" name="sexo" class="input-dado" value="Masculino" readonly>
+                </div>
+            </form>
+        </div>
+
+        <div class="profile-actions">
+            <button class="btn-back" onclick="window.location.href='index.html'">
+                <span class="material-icons">arrow_back</span>
+            </button>
+            
+            <button type="button" class="btn-edit-profile" id="btn-editar" onclick="habilitarEdicao()">
+                Editar Perfil
+            </button>
+        </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-cols">
+                <div class="col">
+                    <h4>Institucional</h4>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Blog</a>
+                </div>
+                <div class="col">
+                    <h4>Sites Complementares</h4>
+                    <a href="http://www.campusrussas.ufc.br/" target="_blank">UFC - Campus Russas</a>
+                    <a href="https://www.ufc.br/" target="_blank">UFC - Universidade Federal do Ceará</a>
+                </div>
+                <div class="col logo-footer">
+                    <img src="images/logo-texto-aep.png" alt="Logo">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Achados e Perdidos - Nenhum dos direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="perfil.js"></script>
+
+</body>
+</html>
+
